@@ -1,0 +1,51 @@
+
+div.menu_bottom {
+	text-align: center;
+	font-size: 40px;
+	margin: auto;
+	margin-top: 15px;
+	width: 91%;
+	border-bottom: 4px solid #777;
+	font-weight: bold;
+}
+
+div.menu_bottom a {
+	color: #555;
+}
+
+div.menu_bottom a:hover {
+	color: #999;
+}
+
+div.bottom {
+	text-align: center;
+	font-size: 30px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 91%;
+	font-weight: bold;
+	color: #555;
+}
+
+@media (max-width: 1150px) {
+	div.menu_bottom {
+		font-size: 22px;
+	}
+	
+	div.bottom {
+		font-size: 18px;
+	}
+}
+
+/* PRE MOBIL */
+@media (max-width: 576px) {
+	div.menu_bottom {
+		display: none;
+	}
+
+	div.bottom {
+		font-size: 20px;
+		border-top: 5px solid #777;
+	}
+}

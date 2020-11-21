@@ -1,0 +1,275 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-color: lightgray;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+/* VACSINA POCITACOV */
+div.menu {
+	background-color: #111;
+	font-size: 30px;
+	width: 100%;
+}
+
+div.menu div.comp {
+	display: inline-block;
+	line-height: 55px;
+	color: #777;
+}
+
+div.menu div.comp img {
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin: 10px 10px;
+	border-radius: 10px;
+}
+
+div.menu div.menu_box {
+	display: inline;
+	/*width: 78vw;
+	height: 2vw;*/
+	font-size: 25px;
+	font-weight: bold;
+}
+
+div.menu a.button {
+	display: none;
+}
+
+div.menu ul.menu_left {
+	display: inline;
+}
+
+div.menu ul.menu_left a, div.menu ul.menu_right a {
+	color: #888;
+	text-decoration: none;
+}
+
+div.menu ul.menu_left a.active, div.menu ul.menu_right a.active {
+	color: #CCC;
+}
+
+div.menu ul.menu_left a.active:hover, div.menu ul.menu_right a.active:hover {
+	color: #FFF;
+}
+
+div.menu ul.menu_left a:hover, div.menu ul.menu_right a:hover {
+	color: #AAA;
+}
+
+div.menu ul.menu_left li {
+	display: inline-block;
+	margin: 0px 5px;
+}
+
+div.menu ul.menu_right {
+	float: right;
+	display: inline;
+	z-index: 3;
+	margin-top: 20px;
+	margin-right: 50px;
+}
+
+div.menu ul.menu_right li {
+	font-size: 20px;
+	display: inline-block;
+}
+
+div.menu ul.menu_right li img {
+	width: 0.8vw;
+	height: 0.8vw;
+	border-radius: 0.2vw;
+}
+
+div.menu li.drop {
+	border-bottom: 0.2vw solid #AAA;
+	border-radius: 0.3vw;
+}
+
+div.menu li.drop ul {
+	position: absolute;
+	z-index: 5;
+	right: 2.8vw;
+	margin-top: 0.2vw;
+	display: block;
+	text-align: right;
+	padding: 0vw;
+	background-color: #111;
+	color: #AAA;
+	border-radius: 0vw 0vw 1vw 1vw;
+	max-height: 0;
+	overflow: hidden;
+	transition: 1s;
+}
+
+div.menu li.drop:hover ul {
+	max-height: 3vw;
+	padding: 1vw;
+}
+
+/* VACSINA TABLETOV */
+@media (max-width: 1150px) {
+	div.menu {
+		font-size: 30px;
+	}
+	
+	div.menu div.comp {
+		display: block;
+		text-align: left;
+		line-height: normal;
+		vertical-align: middle;
+		color: #777;
+		margin-left: 40px;
+	}
+
+	div.menu div.comp img {
+		float: none;
+		width: 22px;
+		height: 22px;
+		margin: 0px 0px;
+		border-radius: 5px;
+	}
+	
+	div.menu div.menu_box {
+		display: block;
+		width: auto;
+		height: auto;
+	}
+	
+	div.menu ul.menu_left {
+		display: block;
+		margin: 5px 0px 0px 0px;
+	}
+
+	div.menu ul.menu_right {
+		text-align: right;
+		float: none;
+		display: block;
+		margin-top: 0px;
+		margin-right: 0px;
+		padding: 0vw 3vw 1vw 0vw;
+	}
+
+	div.menu ul.menu_right li {
+		font-size: 20px;
+		display: inline;
+	}
+
+	div.menu ul.menu_right li img {
+		width: 15px;
+		height: 15px;
+		border-radius: 5px;
+	}
+}
+
+/* VACSINA MOBILOV */
+@media (max-width: 576px) {
+	div.menu {
+		background-color: #111;
+		font-size: 45px;
+		width: 100%;
+	}
+
+	div.menu div.comp {
+		display: block;
+		line-height: normal;
+		margin: 0px 0px 0px 0px;
+		color: #777;
+		text-align: center;
+	}
+
+	div.menu div.comp img {
+		float: left;
+		width: 40px;
+		height: 40px;
+		margin: 5px 0px 0px 30px;
+		border-radius: 5px;
+	}
+	
+	div.menu a.button {
+		display: inline-block;
+		font-size: 45px;
+		color: #FFF;
+		background-color: #333;
+		text-align: center;
+		width: 50px;
+		height: 50px;
+		text-decoration: none;
+		border-radius: 10px;
+		margin: 0px 0px 0px 30px;
+	}
+
+	div.menu ul.menu_left {
+		display: block;
+		margin: 0px;
+		padding: 0px;
+		max-height: 0px;
+		overflow: hidden;
+		transition: 1s;
+		font-size: 35px;
+	}
+	
+	div.menu_box:hover ul.menu_left,
+	div.menu_box:hover ul.menu_right {
+		max-height: 100%;
+	}
+
+	div.menu ul.menu_left li {
+		display: block;
+		margin-left: 30px;
+	}
+
+	div.menu ul.menu_right {
+		float: none;
+		display: block;
+		margin-right: 0px;
+		margin-left: 30px;
+		text-align: left;
+		overflow: hidden;
+		max-height: 0px;
+		transition: 1s;
+	}
+
+	div.menu ul.menu_right li {
+		font-size: 25px;
+		display: block;
+		padding: 10px;
+	}
+
+	div.menu ul.menu_right li img {
+		width: 20px;
+		height: 20px;
+		border-radius: 10px;
+	}
+
+	div.menu li.drop {
+		border-bottom: 3px solid #AAA;
+		border-radius: 10px;
+	}
+
+	div.menu li.drop ul {
+		position: static;
+		right: 0px;
+		margin-top: 0px;
+		display: block;
+		text-align: left;
+		padding: 0px;
+		background-color: #111;
+		color: #AAA;
+		border-radius: 0px 0px 15px 15px;
+		max-height: 0;
+		overflow: hidden;
+		transition: 1s;
+	}
+
+	div.menu li.drop:hover ul {
+		max-height: 100%;
+		padding: 0vw;
+	}
+}

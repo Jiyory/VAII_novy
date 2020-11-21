@@ -1,0 +1,298 @@
+div.cont_panel {
+	width: 94%;
+	margin: auto;
+	font-size: 25px;
+	text-align: justify;
+}
+
+div.cont_panel h1 {
+	text-align: center;
+	font-size: 45px;
+	font-weight: bold;
+}
+
+div.cont_panel a {
+	color: #F0F;
+}
+
+div.cont_panel a:hover {
+	color: #F00;
+}
+
+div.cont_panel div.cont_info h1 {
+	text-align: left;
+	font-size: 30px;
+	padding: 10px 30px;
+	background-color: #222;
+	border-radius: 45px 0px 0px 0px;
+	color: #FFF;
+	margin: 0;
+	margin-top: 30px;
+}
+
+div.cont_panel div.cont_info div {
+	font-size: 22px;
+	padding: 10px 30px;
+	background-color: #FFF;
+}
+
+div.cont_panel div.cont_info div span {
+	display: block;
+	font-size: 20px;
+	background-color: transparent;
+	padding: 0px 0px;
+	text-align: right;
+	border-radius: 0px 0px 0px 0px;
+}
+
+div.cont_panel div.cont_info div span span, div.cont_panel span.add_techn {
+	color: #F0F;
+	display: inline;
+}
+
+div.cont_panel div.cont_info div span span:hover, div.cont_panel span.add_techn:hover {
+	color: #F00;
+	cursor: pointer;
+}
+
+div.cont_panel div.cont_info span {
+	display: block;
+	font-size: 20px;
+	background-color: #222;
+	padding: 5px 25px;
+	color: #AAA;
+	text-align: right;
+	border-radius: 0px 0px 30px 0px;
+}
+
+div.cont_panel table.cont_list {
+	margin: auto;
+	font-size: 25px;
+	width: 100%;
+	background-color: #FFF;
+	padding: 15px 30px;
+	border-radius: 40px 0px 40px 0px;
+}
+
+div.cont_panel table.cont_list td {
+	border-bottom: 2px solid black;
+	text-align: center;
+	border-radius: 0px 0px 15px 15px;
+	padding: 5px 2px;
+}
+
+div.cont_panel div.galery {
+	width: 100%;
+	background-color: gray;
+	text-align: center;
+}
+
+div.cont_panel div.galery a {
+	cursor: pointer;
+}
+
+div.cont_panel div.galery img {
+	display: inline-block;
+	width: 27vw;
+	height: 15vw;
+	padding: 15px;
+}
+
+div#galery_full {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.9);
+	display: none;
+}
+
+div#galery_full img {
+	position: fixed;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	max-width: 90vw;
+	max-height: 90vh;
+}
+
+div#techn_update {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+div#techn_update form {
+	background-color: #111;
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-top: 100px;
+	text-align: center;
+	padding: 2% 5%;
+	border: 3px solid #FFF;
+	border-radius: 20px;
+}
+
+div#techn_update form span {
+	display: block;
+	text-align: right;
+}
+
+div#techn_update form span span {
+	display: inline;
+	color: #000;
+	background-color: #666;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #000;
+	font-weight: bold;
+}
+
+div#techn_update form span span:hover {
+	background-color: #FFF;
+	cursor: pointer;
+}
+
+div#techn_update form h1 {
+	font-size: 25px;
+	color: #FFF;
+}
+
+div#techn_update form input#id {
+	display: none;
+}
+
+div#techn_update form input, div#techn_update form textarea {
+	width: 60%;
+	padding: 1% 5%;
+	transition: 1s;
+	border: 2px solid #FFF;
+	border-radius: 30px;
+	background-color: transparent;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+div#techn_update form textarea {
+	width: 90%;
+}
+
+div#techn_update form textarea {
+	height: 150px;
+}
+
+div#techn_update form input:focus, div#techn_update form textarea:focus {
+	width: 90%;
+	background-color: #222;
+	outline: none;
+	border: 2px solid #555;
+}
+
+div#techn_update form div#tech_err {
+	color: #F00;
+	font-weight: bold;
+}
+
+div#techn_update form button {
+	margin: 10px;
+	padding: 1% 2%;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 30px;
+	border: 2px solid #FFF;
+	background-color: #222;
+	color: #FFF;
+}
+
+div#techn_update form button:hover, div#techn_update form button:active {
+	background-color: #444;
+}
+
+div#techn_update form button:disabled {
+	background-color: #000;
+}
+
+@media (max-width: 1150px) {
+	div.cont_panel {
+		font-size: 20px;
+	}
+
+	div.cont_panel h1 {
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	div.cont_panel div.cont_info h1 {
+		font-size: 22px;
+	}
+
+	div.cont_panel div.cont_info div {
+		font-size: 20px;
+	}
+
+	div.cont_panel div.cont_info span {
+		font-size: 18px;
+	}
+	
+	div.cont_panel table.cont_list {
+		font-size: 20px;
+	}
+	
+	div.cont_panel div.galery img {
+		padding: 5px;
+	}	
+	
+	div#galery_full img {
+		max-width: 100vw;
+		max-height: 100vh;
+	}
+
+	div#techn_update form {
+		margin-top: 10px;
+	}	
+	
+	div#techn_update form textarea {
+		height: 70px;
+	}
+}
+
+@media (max-width: 680px) {
+	div.cont_panel {
+		width: 100%;
+		margin: auto;
+		font-size: 20px;
+		text-align: justify;
+	}
+	
+	div.cont_panel div.plain {
+		padding: 0px 15px;
+	}
+	
+	div.cont_panel div.galery {
+		background-color: transparent;
+	}
+	
+	div.cont_panel div.galery img {
+		display: inline-block;
+		width: 100%;
+		height: 50vw;
+		padding: 0px;
+		margin: 0px 0px;
+	}
+	
+	div#techn_update form {
+		margin-top: 70px;
+	}
+	
+	div#techn_update form textarea {
+		height: 120px;
+	}
+}

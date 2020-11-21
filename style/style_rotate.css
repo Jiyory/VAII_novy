@@ -1,0 +1,153 @@
+div.rot_box {
+	position: relative;
+	width: 100%;
+	height: 29.95vw;
+	background-color: white;
+	z-index: 0;
+	padding: 0;
+	border-bottom: 10px solid #333;
+}
+
+div.rot_left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3vw;
+	height: 30vw;
+	line-height: 30vw;
+	font-size: 3vw;
+	text-align: center;
+	font-weight: bold;
+	z-index: 1;
+	color: #FFF;
+	transition: background-color 1s, color 1s;
+	cursor: pointer;
+}
+
+div.rot_right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 3vw;
+	height: 30vw;
+	line-height: 30vw;
+	font-size: 3vw;
+	text-align: center;
+	font-weight: bold;
+	z-index: 1;
+	color: #FFF;
+	transition: background-color 1s, color 1s;
+	cursor: pointer;
+}
+
+div.rot_right:hover, div.rot_left:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #333;
+}
+
+div#rot_buttons {
+	position: absolute;
+	bottom: 5px;
+	right: 0;
+	width: 100vw;
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+	z-index: 1;
+}
+
+div#rot_buttons span {
+	color: #FFF;
+	text-decoration: none;
+}
+
+div#rot_buttons span.active {
+	color: #777;
+}
+
+div#rot_buttons span:hover {
+	color: #555;
+	cursor: pointer;
+}
+
+div.rot_info {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	transition: 1s;
+}
+
+div.rot_info img {
+	position: absolute;
+	z-index: 0;
+	width: 100vw;
+	height: 30vw;
+}
+
+div.rot_info div {
+	position: absolute;
+	z-index: 0;
+	color: white;
+	bottom: 35px;
+	left: 10vw;
+}
+
+div.rot_info h1 {
+	margin: 0;
+	display: inline-block;
+	font-size: 40px;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px 30px;
+	border-radius: 40px 40px 0px 0px;
+}
+
+div.rot_info div div {
+	position: static;
+	z-index: 1;
+	margin: 0;
+	width: 70vw;
+	font-size: 23px;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 10px 30px;
+	text-align: justify;
+	border-radius: 0vw 40px 40px 40px;
+}
+
+.hide {
+	opacity: 0;
+}
+
+/* VACSINA TABLETOV */
+@media (max-width: 1150px) {
+	div.rot_box {
+		top: -25px;
+	}
+	
+	div.rot_info div {
+		top: 20vw;
+	}
+
+	div.rot_info h1 {
+		font-size: 25px;
+		width: 70vw;
+		border-radius: 15px 15px 15px 15px;
+	}
+
+	div.rot_info div div {
+		display: none;
+	}
+	
+	div#rot_buttons {
+		font-size: 15px;
+	}
+}
+
+/* VACSINA MOBILOV */
+@media (max-width: 576px) {
+	div.rot_box {
+		display: none;
+	}
+}

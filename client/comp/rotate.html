@@ -1,0 +1,37 @@
+<!-- Indicators -->
+<div class="row d-flex justify-content-center align-items-center" style="height: 400px;" ng-if="loading">
+    <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<span ng-if="!loading">
+    <ul class="carousel-indicators">
+        <li data-target="#rotateBar" data-slide-to="{{$index}}" ng-repeat="item in data track by $index"></li>
+    </ul>
+
+  <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item {{addClasses($index)}}" ng-repeat="item in data track by $index">
+            
+            <span ng-bind-html="item.img | trust"></span>
+            <div class="carousel-caption">
+                <h3>{{item.head}}</h3>
+                <p>{{item.text}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" data-target="#rotateBar" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" data-target="#rotateBar" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</span>

@@ -18,7 +18,6 @@
         <title ng-controller="titleCTRL">VPGum - {{page.name}}</title>
     </head>
     <body>
-        TExt
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ng-controller="navBarCTRL">
             <div class="container-fluid">   <!-- Roztiahne navbar na celu plochu -->
                 <a class="navbar-brand" href="#"><img src="client/design/logo.png"> {{owner.name}}</a>
@@ -28,35 +27,66 @@
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" ng-class="activeClass(item.current)" ng-repeat="item in menu">
-                            <a class="nav-link" href="{{item.route}}">{{item.text}} <span class="sr-only" ng-if="item.current">(current)</span></a>
-                        </li>
-                        <!--<li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
+                        <li class="nav-item" ng-class="activeClass(item.current, item.submenu != null)" ng-repeat="item in menu">
+                            <a class="nav-link" href="{{item.route}}" ng-if="item.submenu == null">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="{{item.iconColor}}" xmlns="http://www.w3.org/2000/svg" ng-if="item.icon != null">
+                                    <path fill-rule="evenodd" d="{{item.icon}}"/>
+                                    <path fill-rule="evenodd" d="{{item.icon2}}" ng-if="item.icon2 != null"/>
+                                </svg>
+                                {{item.text}} 
+                                <span class="sr-only" ng-if="item.current">(current)</span>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-if="item.submenu != null">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="{{item.iconColor}}" xmlns="http://www.w3.org/2000/svg" ng-if="item.icon != null">
+                                    <path fill-rule="evenodd" d="{{item.icon}}"/>
+                                    <path fill-rule="evenodd" d="{{item.icon2}}" ng-if="item.icon2 != null"/>
+                                </svg>
+                                {{item.text}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" ng-if="item.submenu != null">
+                                <a class="dropdown-item" href="{{subitem.route}}" ng-repeat="subitem in item.submenu">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="{{subitem.iconColor}}" xmlns="http://www.w3.org/2000/svg" ng-if="subitem.icon != null">
+                                        <path fill-rule="evenodd" d="{{subitem.icon}}"/>
+                                        <path fill-rule="evenodd" d="{{subitem.icon2}}" ng-if="subitem.icon2 != null"/>
+                                    </svg>
+                                    {{subitem.text}}
+                                </a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li>-->
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    <ul class="navbar-nav my-1 my-lg-0">
+                        <li class="nav-item" ng-class="activeClass(item.current, item.submenu != null)" ng-repeat="item in leftMenu">
+                            <a class="nav-link" href="{{item.route}}" ng-if="item.submenu == null">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="{{item.iconColor}}" xmlns="http://www.w3.org/2000/svg" ng-if="item.icon != null">
+                                    <path fill-rule="evenodd" d="{{item.icon}}"/>
+                                    <path fill-rule="evenodd" d="{{item.icon2}}" ng-if="item.icon2 != null"/>
+                                </svg>
+                                {{item.text}} 
+                                <span class="sr-only" ng-if="item.current">(current)</span>
+                            </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-if="item.submenu != null">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="{{item.iconColor}}" xmlns="http://www.w3.org/2000/svg" ng-if="item.icon != null">
+                                    <path fill-rule="evenodd" d="{{item.icon}}"/>
+                                    <path fill-rule="evenodd" d="{{item.icon2}}" ng-if="item.icon2 != null"/>
+                                </svg>
+                                {{item.text}}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" ng-if="item.submenu != null">
+                                <a class="dropdown-item" href="{{subitem.route}}" ng-repeat="subitem in item.submenu">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="{{subitem.iconColor}}" xmlns="http://www.w3.org/2000/svg" ng-if="subitem.icon != null">
+                                        <path fill-rule="evenodd" d="{{subitem.icon}}"/>
+                                        <path fill-rule="evenodd" d="{{subitem.icon2}}" ng-if="subitem.icon2 != null"/>
+                                    </svg>
+                                    {{subitem.text}}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-
-                <div ng-view></div>
+                <!-- V pripade max zobrazenia sa trosku odsadi -->
+                <div class="col-lg-1"></div>
             </div>
         </nav>
+        <div ng-view></div>
     </body>
 </html>

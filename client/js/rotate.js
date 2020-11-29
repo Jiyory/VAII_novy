@@ -1,39 +1,26 @@
 /*
  * Kontroler pre rotacny panel
  */
-app.controller("rotateBarCTRL", function($scope, PageDataFA, $templateRequest, $sce, $compile) {
-    $scope.loading = true;
-    $scope.data = [ // TODO nacitat z databazy
-        {
-            head: "Nadpis1",
-            text: "Popis k obrazku 1",
-            img: '<img src="client/design/rotate1.jpg" alt="{{item.head}}">',
-        },
-        {
-            head: "Nadpis2",
-            text: "Popis k obrazku 2",
-            img: '<img src="client/design/rotate2.jpg" alt="{{item.head}}">',
-        },
-        {
-            head: "Nadpis3",
-            text: "Popis k obrazku 3",
-            img: '<img src="client/design/rotate3.jpg" alt="{{item.head}}">',
-        },
-        {
-            head: "Nadpis4",
-            text: "Popis k obrazku 4",
-            img: '<img src="client/design/rotate0.jpg" alt="{{item.head}}">',
-        }
-    ]
+app.controller("rotateBarCTRL", function($scope, UserData, $templateRequest, $sce, $compile, $http) {
+    $scope.loading = true; // aby sa zobrazilo kolecko nacitania
+    $scope.user = UserData;
 
-    var templateUrl = $sce.getTrustedResourceUrl('client/comp/rotate.html');
-
-    $templateRequest(templateUrl).then(function(template) {
+    /* Nacitanie html stranky a nasledne nacitanie dat */
+    var htmlAPI = $sce.getTrustedResourceUrl('client/comp/rotate.html');
+    $templateRequest(htmlAPI).then(function(template) {
         $compile($("#rotateBar").html(template).contents())($scope);
-        $scope.loading = false;
-    }, function() {
-        // An error has occurred
-    });
+        // nacitanie dat
+        $http({
+            method: 'GET',
+            url: 'server/loadRotate.php',
+        }).then(function(value) {
+            $scope.data = value.data;
+            angular.forEach($scope.data, function(item) {
+                item.img = '<img src="client/design/rotate'+item.rot_id+'.jpg" alt="'+item.header+'">';
+            });
+            $scope.loading = false; // aby sa zobrazil html kod
+        }, function() {});
+    }, function() {});
 
     $scope.addClasses = function(id) {
         if (id == 0)

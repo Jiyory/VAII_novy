@@ -21,8 +21,8 @@
             
             <span ng-bind-html="item.img | trust"></span>
             <div class="carousel-caption">
-                <h3>{{item.head}}</h3>
-                <p>{{item.text}}</p>
+                <h3>{{item.header}}</h3>
+                <p>{{item.text}} <span class="editRotate" ng-if="user.admin">Upraviť</span></p>
             </div>
         </div>
     </div>

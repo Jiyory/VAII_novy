@@ -15,6 +15,16 @@ app.filter("trust", ['$sce', function($sce) {
 /*
  * Zdielane data o nazve webstranky - tiez staticke udaje
  */
+app.factory("UserData", function () {   // sluzi ako zdielane data - vytvori sa len 1x
+    return {
+        name: "",
+        admin: true,
+    }
+});
+
+/*
+ * Zdielane data o nazve webstranky - tiez staticke udaje
+ */
 app.factory("PageDataFA", function () {   // sluzi ako zdielane data - vytvori sa len 1x
     return {
         page: {

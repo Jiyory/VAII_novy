@@ -22,3 +22,19 @@ body {
 .carousel-control-prev, .carousel-control-next {
     cursor: pointer;
 }
+
+.editRotate {
+    color: #FFF;
+    background-color: #05F;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 10px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    transition: 1s;
+}
+
+.editRotate:hover {
+    background-color: #00F;
+    cursor: pointer;
+}

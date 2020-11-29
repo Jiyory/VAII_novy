@@ -10,28 +10,53 @@
         <span class="sr-only">Loading...</span>
     </div>
 </div>
-<span ng-if="!loading">
-    <ul class="carousel-indicators">
-        <li data-target="#rotateBar" data-slide-to="{{$index}}" ng-repeat="item in data track by $index"></li>
-    </ul>
+<div id="rotateBar" class="slide d-none d-lg-block carousel" data-ride="carousel" ng-if="!loading">
+    <span>
+        <ul class="carousel-indicators">
+            <li data-target="#rotateBar" data-slide-to="{{$index}}" ng-repeat="item in data track by $index"></li>
+        </ul>
 
-  <!-- The slideshow -->
-    <div class="carousel-inner">
-        <div class="carousel-item {{addClasses($index)}}" ng-repeat="item in data track by $index">
-            
-            <span ng-bind-html="item.img | trust"></span>
-            <div class="carousel-caption">
-                <h3>{{item.header}}</h3> 
-                <p>{{item.text}} <span class="editRotate" ng-if="user.admin">Upraviť</span></p>
+    <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item {{addClasses($index)}}" ng-repeat="item in data track by $index">
+                <span class="editRotate" ng-if="user.admin" data-toggle="modal" data-target="#modalRotate" ng-click="setModalText(item)">Upraviť</span>
+                <span class="deleteRotate" ng-if="user.admin" ng-click="deleteRotate(item)" ng-conf>Odstrániť</span>
+                <span class="newRotate" ng-if="user.admin" data-toggle="modal" data-target="#modalRotate" ng-click="setModalText(null)">Pridať</span>
+                <span ng-bind-html="item.img | trust"></span>
+                <div class="carousel-caption">
+                    <h3>{{item.header}}</h3> 
+                    <p>{{item.text}}</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" data-target="#rotateBar" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" data-target="#rotateBar" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
-</span>
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" data-target="#rotateBar" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" data-target="#rotateBar" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </span>
+</div>
+<!-- Modal -->
+<div id="modalRotate" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Rotačný panel</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Nadpis" ng-hide="true" ng-model="modID">
+                <input type="text" class="form-control" placeholder="Nadpis" ng-model="modHeader"><br>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="modText"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="updateRotate()">Upraviť</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Zatvoriť</button>
+            </div>
+        </div>
+    
+    </div>
+</div>

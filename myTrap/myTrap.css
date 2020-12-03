@@ -1,0 +1,374 @@
+/*
+ * Velkost:
+ * XS       SM      MD      XM      LG      XL      2K      4K      8K
+ * <=575     >=576  >=768   >=992   >=1200  >=1900  >=2500  >=3800  >=8100
+ *
+ * POZOR! XS je zradne, pretoze je definovane ako <= zatial co ostatne su ako >= (tj. sz XS funguje len na velkost XS)
+ *
+ * Pouzitie:
+ * container        - blok ktory prisposobuje svoju velkost obrazovke, avsak podla preddefinovanych hranic
+ * container-full   - blok ktory prisposobuje svoju velkost obrazovke (100%)
+ * container-sz     - sz je velkost, container bude mat velkost ako keby je obrazovka taka velka, na mensich je 100%
+ *
+ * row          - rozdeli nadradeny blok/riadok na 12 casti kde je mozne pouzit col-x (je mozne pouzit aj viac ale chova sa to divne)
+ * row-sz       - az po dosiahnuti sz sa zmeni na "riadok" s 12 castami - odporucam pouzit v spojeni s column
+ * column       - sam o sebe prakticky nic nerobi
+ * column-sz    - po dosiahnuti sz sa zmeni na klasicky div, odporucam pouzit s row alebo row-sz
+ *  
+ * col/col-sz   - prvok bude mat automaticku velkost - pozor! ak pouzijes col-6 a col, ich velkosti sa spocitaju a teda col-6
+ *                bude mat velkost 6/18 (6 + 12 = 18) a col bude mat velkost 12/18
+ *                preto odporucam pouzivat v jednom bloku iba col alebo col-x
+ * col-x        - prvok(blok) bude mat velkost x/12 z nadradeneho bloku
+ * col-sz-x     - blok bude mat velkost x/12 od daneho SZ rozlisenia, mensie (pripadne vacsie) si treba osetrit
+ *              bud sa prida col-x co bude defaultna velkost (pre mensie) alebo col-sz-x ak vacsie
+ *
+ * hide     - skryje dany blok pre vsetky rozlisenia
+ * hide-sz  - skryje dany blok pre sz rozlisenie a vsetky vyssie
+ * show     - zobrazi dany blok pre vsetky rozlisenia, netestovane pri pouziti hide-sz
+ * showinl  - zobrazi dany blok ako "inline"
+ * showbl   - zobrazi dany blok ako "inline-block"
+ * show-sz  - zobrazi dany blok pre vyssie rozlisenia - showinl a showbl maju tiez SZ variantu
+ *
+ * h1-h5    - velkosti od 35 - 10
+ * b,bb,bn  - font weight bold,bolder,normal
+ * i,in     - font style italic,normal
+ *
+ * w-x      - nastavi width okna na dane percenta... x moze byt 100,66,50,33,25
+ *
+ * box-pos  - umiestni box na pos=left/right/center
+ *
+ * tpos     - zarovna text na pos=left/right/center/just
+ *
+ */
+
+body {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+
+h1 { font-size: 35px; }
+h2 { font-size: 30px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 15px; }
+h6 { font-size: 10px; }
+
+.b { font-weight: bold; }
+.bb { font-weight: bolder; }
+.bn { font-weight: normal; }
+
+.i { font-style: italic; }
+.in { font-weight: normal; }
+
+.tleft { text-align: left; }
+.tright { text-align: right; }
+.tcenter {text-align: center; }
+.tjust { text-align: justify; }
+
+.bg-red { background-color: #A00; }
+.bg-blue { background-color: #059; }
+.bg-green { background-color: #092; }
+.bg-white { background-color: #FFF; }
+.bg-black { background-color: #000; }
+
+.w-100 { width: 100%; }
+.w-66 { width: 66.67%; }
+.w-50 { width: 50%; }
+.w-33 { width: 33.33%; }
+.w-25 { width: 25%; }
+
+.box-left { margin-left: 0; margin-right: auto; }
+.box-right { margin-left: auto; margin-right: 0; }
+.box-center { margin: auto; }
+
+.container { margin: auto; width: 1400px; }
+.container-full { width: 100%; }
+
+.row { width: 100%; display: flex; align-items: stretch; }
+.column { width: 100%; display: block; align-items: stretch; }
+/*.col {width: 100%; }
+.col-1 { width: 8.3/3%; }
+.col-2 { width: 16.67%; }
+.col-3 {  width: 25%; }
+.col-4 { width: 33.33%; }
+.col-5 { width: 41.67%; }
+.col-6 { width: 50%; }
+.col-7 { width: 58.33%; }
+.col-8 { width: 66.67%; }
+.col-9 { width: 75%; }
+.col-10 { width: 83.33%; }
+.col-11 { width: 91.67%; }
+.col-12 { width: 100%; }*/
+
+col { flex: 1; }
+.col-1 { flex: 1; }
+.col-2 { flex: 2; }
+.col-3 {  flex: 3; }
+.col-4 { flex: 4; }
+.col-5 { flex: 5; }
+.col-6 { flex: 6; }
+.col-7 { flex: 7; }
+.col-8 { flex: 8; }
+.col-9 { flex: 9; }
+.col-10 { flex: 10; }
+.col-11 { flex: 11; }
+.col-12 { flex: 12; }
+
+.hide { display: none; }
+.show { display: block; }
+.showinl { display: inline; }
+.showbl { display: inline-block; }
+
+@media only screen and (max-width: 575px) { /* XS */
+    /*
+     * container: 100%
+     */
+    .row-xs { width: 100%; display: flex; align-items: stretch; }
+    .column-xs { width: 100%; display: block; align-items: stretch; }
+    .col-xs { flex: 1; }
+    .col-xs-1 { flex: 1; }
+    .col-xs-2 { flex: 2; }
+    .col-xs-3 {  flex: 3; }
+    .col-xs-4 { flex: 4; }
+    .col-xs-5 { flex: 5; }
+    .col-xs-6 { flex: 6; }
+    .col-xs-7 { flex: 7; }
+    .col-xs-8 { flex: 8; }
+    .col-xs-9 { flex: 9; }
+    .col-xs-10 { flex: 10; }
+    .col-xs-11 { flex: 11; }
+    .col-xs-12 { flex: 12; }
+    .container, .container-xs, .container-sm, .container-md, .container-xm, .container-lg, .container-xl, .container-2k, .container-8k, .container-4k { width: 100%; }
+
+    .hide-xs { display: none; }
+    .show-xs { display: block; }
+    .showinl-xs { display: inline; }
+    .showbl-xs { display: inline-block; }
+}
+
+@media only screen and (min-width: 576px) { /* SM */
+    /*
+     * container: 576px
+     */
+    .row-sm { width: 100%; display: flex; align-items: stretch; }
+    .column-sm { width: 100%; display: block; align-items: stretch; }
+    .col-sm { flex: 1; }
+    .col-sm-1 { flex: 1; }
+    .col-sm-2 { flex: 2; }
+    .col-sm-3 {  flex: 3; }
+    .col-sm-4 { flex: 4; }
+    .col-sm-5 { flex: 5; }
+    .col-sm-6 { flex: 6; }
+    .col-sm-7 { flex: 7; }
+    .col-sm-8 { flex: 8; }
+    .col-sm-9 { flex: 9; }
+    .col-sm-10 { flex: 10; }
+    .col-sm-11 { flex: 11; }
+    .col-sm-12 { flex: 12; }
+    .container-md, .container-xm, .container-lg, .container-xl, .container-2k, .container-8k, .container-4k { width: 100%; }
+    .container, .container-sm { margin: auto; width: 576px; }
+    .container-xs { width: 100%; max-width: 575px; } /* PRETOZE XS je len a len pre telefony - je tam podmienka <= a vsade inde je >= */
+
+    .hide-sm { display: none; }
+    .show-sm { display: block; }
+    .showinl-sm { display: inline; }
+    .showbl-sm { display: inline-block; }
+}
+
+@media only screen and (min-width: 768px) { /* MD */
+    /*
+     * container: 768px
+     */
+    .row-md { width: 100%; display: flex; align-items: stretch; }
+    .column-md { width: 100%; display: block; align-items: stretch; }
+    .col-md { flex: 1; }
+    .col-md-1 { flex: 1; }
+    .col-md-2 { flex: 2; }
+    .col-md-3 {  flex: 3; }
+    .col-md-4 { flex: 4; }
+    .col-md-5 { flex: 5; }
+    .col-md-6 { flex: 6; }
+    .col-md-7 { flex: 7; }
+    .col-md-8 { flex: 8; }
+    .col-md-9 { flex: 9; }
+    .col-md-10 { flex: 10; }
+    .col-md-11 { flex: 11; }
+    .col-md-12 { flex: 12; }
+    .container-xm, .container-lg, .container-xl, .container-2k, .container-8k, .container-4k { width: 100%; }
+    .container, .container-md { margin: auto; width: 768px; }
+
+    .hide-md { display: none; }
+    .show-md { display: block; }
+    .showinl-md { display: inline; }
+    .showbl-md { display: inline-block; }
+}
+
+@media only screen and (min-width: 992px) { /* XM */
+    /*
+     * container: 984px
+     */
+    .row-xm { width: 100%; display: flex; align-items: stretch; }
+    .column-xm { width: 100%; display: block; align-items: stretch; }
+    .col-xm { flex: 1; }
+    .col-xm-1 { flex: 1; }
+    .col-xm-2 { flex: 2; }
+    .col-xm-3 {  flex: 3; }
+    .col-xm-4 { flex: 4; }
+    .col-xm-5 { flex: 5; }
+    .col-xm-6 { flex: 6; }
+    .col-xm-7 { flex: 7; }
+    .col-xm-8 { flex: 8; }
+    .col-xm-9 { flex: 9; }
+    .col-xm-10 { flex: 10; }
+    .col-xm-11 { flex: 11; }
+    .col-xm-12 { flex: 12; }
+    .container-lg, .container-xl, .container-2k, .container-8k, .container-4k { width: 100%; }
+    .container, .container-xm { margin: auto; width: 984px; }
+
+    .hide-xm { display: none; }
+    .show-xm { display: block; }
+    .showinl-xm { display: inline; }
+    .showbl-xm { display: inline-block; }
+}
+
+@media only screen and (min-width: 1200px) { /* LG */
+    /*
+     * container: 1200px
+     */
+    .row-lg { width: 100%; display: flex; align-items: stretch; }
+    .column-lg { width: 100%; display: block; align-items: stretch; }
+    .col-lg { flex: 1; }
+    .col-lg-1 { flex: 1; }
+    .col-lg-2 { flex: 2; }
+    .col-lg-3 {  flex: 3; }
+    .col-lg-4 { flex: 4; }
+    .col-lg-5 { flex: 5; }
+    .col-lg-6 { flex: 6; }
+    .col-lg-7 { flex: 7; }
+    .col-lg-8 { flex: 8; }
+    .col-lg-9 { flex: 9; }
+    .col-lg-10 { flex: 10; }
+    .col-lg-11 { flex: 11; }
+    .col-lg-12 { flex: 12; }
+    .container-xl, .container-2k, .container-8k, .container-4k { width: 100%; }
+    .container, .container-lg { margin: auto; width: 1200px; }
+
+    .hide-lg { display: none; }
+    .show-lg { display: block; }
+    .showinl-lg { display: inline; }
+    .showbl-lg { display: inline-block; }
+}
+
+@media only screen and (min-width: 1900px) { /* XL */
+    /*
+     * container: 1896px
+     */
+    .row-xl { width: 100%; display: flex; align-items: stretch; }
+    .column-xl { width: 100%; display: block; align-items: stretch; }
+    .col-xl { flex: 1; }
+    .col-xl-1 { flex: 1; }
+    .col-xl-2 { flex: 2; }
+    .col-xl-3 {  flex: 3; }
+    .col-xl-4 { flex: 4; }
+    .col-xl-5 { flex: 5; }
+    .col-xl-6 { flex: 6; }
+    .col-xl-7 { flex: 7; }
+    .col-xl-8 { flex: 8; }
+    .col-xl-9 { flex: 9; }
+    .col-xl-10 { flex: 10; }
+    .col-xl-11 { flex: 11; }
+    .col-xl-12 { flex: 12; }
+    .container-2k, .container-8k, .container-4k { width: 100%; }
+    .container, .container-xl { margin: auto; width: 1896px; }
+
+    .hide-xl { display: none; }
+    .show-xl { display: block; }
+    .showinl-xl { display: inline; }
+    .showbl-xl { display: inline-block; }
+}
+
+@media only screen and (min-width: 2500px) { /* 2K */
+    /*
+     * container: 2496px
+     */
+    .row-2k { width: 100%; display: flex; align-items: stretch; }
+    .column-2k { width: 100%; display: block; align-items: stretch; }
+    .col-2k { flex: 1; }
+    .col-2k-1 { flex: 1; }
+    .col-2k-2 { flex: 2; }
+    .col-2k-3 {  flex: 3; }
+    .col-2k-4 { flex: 4; }
+    .col-2k-5 { flex: 5; }
+    .col-2k-6 { flex: 6; }
+    .col-2k-7 { flex: 7; }
+    .col-2k-8 { flex: 8; }
+    .col-2k-9 { flex: 9; }
+    .col-2k-10 { flex: 10; }
+    .col-2k-11 { flex: 11; }
+    .col-2k-12 { flex: 12; }
+    .container-8k, .container-4k { width: 100%; }
+    .container, .container-2k { margin: auto; width: 2496px; }
+
+    .hide-2k { display: none; }
+    .show-2k { display: block; }
+    .showinl-2k { display: inline; }
+    .showbl-2k { display: inline-block; }
+}
+
+@media only screen and (min-width: 3800px) { /* 4K */
+    /*
+     * container: 3792px
+     */
+    .row-4k { width: 100%; display: flex; align-items: stretch; }
+    .column-4k { width: 100%; display: block; align-items: stretch; }
+    .col-4k { flex: 1; }
+    .col-4k-1 { flex: 1; }
+    .col-4k-2 { flex: 2; }
+    .col-4k-3 {  flex: 3; }
+    .col-4k-4 { flex: 4; }
+    .col-4k-5 { flex: 5; }
+    .col-4k-6 { flex: 6; }
+    .col-4k-7 { flex: 7; }
+    .col-4k-8 { flex: 8; }
+    .col-4k-9 { flex: 9; }
+    .col-4k-10 { flex: 10; }
+    .col-4k-11 { flex: 11; }
+    .col-4k-12 { flex: 12; }
+    .container-8k { width: 100%; }
+    .container, .container-4k { margin: auto; width: 3792px; }
+
+    .hide-4k { display: none; }
+    .show-4k { display: block; }
+    .showinl-4k { display: inline; }
+    .showbl-4k { display: inline-block; }
+}
+
+@media only screen and (min-width: 8100px) { /* 8K */
+    /*
+     * container: 8100px
+     */
+    .row-8k { width: 100%; display: flex; align-items: stretch; }
+    .column-8k { width: 100%; display: block; align-items: stretch; }
+    .col-8k { flex: 1; }
+    .col-8k-1 { flex: 1; }
+    .col-8k-2 { flex: 2; }
+    .col-8k-3 {  flex: 3; }
+    .col-8k-4 { flex: 4; }
+    .col-8k-5 { flex: 5; }
+    .col-8k-6 { flex: 6; }
+    .col-8k-7 { flex: 7; }
+    .col-8k-8 { flex: 8; }
+    .col-8k-9 { flex: 9; }
+    .col-8k-10 { flex: 10; }
+    .col-8k-11 { flex: 11; }
+    .col-8k-12 { flex: 12; }
+    .container, .container-8k { margin: auto; width: 8100px; }
+
+    .hide-8k { display: none; }
+    .show-8k { display: block; }
+    .showinl-8k { display: inline; }
+    .showbl-8k { display: inline-block; }
+}

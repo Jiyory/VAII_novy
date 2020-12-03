@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sk-SK">
+    <head>
+        <title>Nazov</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="myTrap.css">
+        <link rel="stylesheet" href="components.css">
+    </head>
+    <body>
+        <h3>Div bude menit velkosti ako sa bude prechadzat jednotlivymi rozliseniami</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-1 col-sm-3 col-md-5 col-xm-7 col-lg-9 col-xl-11 bg-red">COL-1<br>na vsetkych (>xs)</div>
+                <div class="col-11 col-sm-9 col-md-7 col-xm-5 col-lg-3 col-xl-1 bg-green">COL-11<br>na vsetkych (>xs)</div>
+            </div>
+        </div>
+        <div class="container-full">
+            <div class="row">
+                <div class="col-1 col-sm-3 col-md-5 col-xm-7 col-lg-9 col-xl-11 bg-red">COL-1<br>na vsetkych (>xs)</div>
+                <div class="col-11 col-sm-9 col-md-7 col-xm-5 col-lg-3 col-xl-1 bg-green">COL-11<br>na vsetkych (>xs)</div>
+            </div>
+        </div>
+        <h3>Div sa bude objavovat/miznut podla rozlisenia</h3>
+        vtipne, na ntbku ani XL nevidim :D ty by si vsak na pc mal vidiet
+        <div class="container">
+            tieto sa objavia ked dosiahnes dane (a vyssie) rozlisenie
+            <div class="row">
+                <div class="hide show-xs col-3 bg-red">XS</div>
+                <div class="hide show-sm col-2 bg-green">SM</div>
+                <div class="hide show-md col-2 bg-red">MD</div>
+                <div class="hide show-xm col-2 bg-green">XM</div>
+                <div class="hide show-lg col-2 bg-red">LG</div>
+                <div class="hide show-xl col-2 bg-green">XL</div>
+            </div>
+
+            tieto sa skryju ked dosiahnes dane (a vyssie) rozlisenie, v podstate to vyzera ako keby sa presunuli hore
+            <div class="row">
+                <div class="show hide-xs col-3 bg-red">XS</div>
+                <div class="show hide-sm col-2 bg-green">SM</div>
+                <div class="show hide-md col-2 bg-red">MD</div>
+                <div class="show hide-xm col-2 bg-green">XM</div>
+                <div class="show hide-lg col-2 bg-red">LG</div>
+                <div class="show hide-xl col-2 bg-green">XL</div>
+            </div>
+        </div>
+        <br><br>
+        <h3>Zostane column (rozdelene do riadkov) az kym sa nedosiahne md (row-md)</h3>
+        <div class="container-full bg-green">
+            <div class="container bg-red">
+                <div class="row-md column">
+                    <div class="menu_left col-10 tcenter bg-blue">
+                        <h3>HOME PAGE1 PAGE2 PAGE3 PAGE4</h3>
+                    </div>
+                    <div class="menu_right col-2 tcenter bg-blue">
+                        <h4>LOGIN</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-green">
+            <div class="row column-md">
+                <div class="menu_left col-10 tcenter bg-blue">
+                    <h3>HOME PAGE1 PAGE2 PAGE3 PAGE4</h3>
+                </div>
+                <div class="menu_right col-2 tcenter bg-blue">
+                    <h4>LOGIN</h4>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="blackBack">
+            <div class="modal w-50 box-center">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <h2 class="col-8">Header</h2>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <input class="col-10">
+                    <div class="col-1"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-3 tright"><button>Close</button></div>
+                    <div class="col-6"></div>
+                    <div class="col-3"><button>Send</button></div>
+                </div>
+            </div>
+        </div>-->
+    </body>
+</html>

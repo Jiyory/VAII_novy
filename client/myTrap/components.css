@@ -1,0 +1,109 @@
+input, textarea {
+    color: #555;
+    background-color: #FFF;
+    padding: 5px;
+    border: 2px solid #999;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+textarea:focus, input:focus, button:focus {
+    outline: none;
+}
+
+button {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #FFF;
+    border: 2px solid #999;
+    border-radius: 10px;
+    padding: 7px 14px;
+    color: #555;
+    box-shadow: 1px 1px 0px #999;
+}
+
+.btn-prim {
+    background-color: #EEE;
+    color: #C00;
+}
+
+.btn-sec {
+    background-color: #EEE;
+    color: #777;
+}
+
+.btn-i {
+    display: inline-block;
+    font-size: 25px;
+    color: #777;
+}
+
+.btn-i-box {
+    display: inline-block;
+    font-size: 25px;
+    color: #333;
+    border-radius: 5px;
+    border: 3px solid #777;
+    padding: 3px;
+}
+
+.btn-i:hover, .btn-i-box:hover {
+    cursor: pointer;
+    color: #A00;
+}
+
+button:hover, button:focus {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.blackBack {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+    background-color: #FFF;
+    border: 2px solid #333;
+}
+
+.modal input {
+    width: 90%;
+}
+
+.modal h3 {
+    color: #777;
+}
+
+.line {
+    border-bottom: 2px solid #CCC;
+    height: 0px;
+    overflow: hidden;
+    display: block;
+}
+
+.toast, .toast-top {
+    position: fixed;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FFF;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: justify;
+    font-size: 18px;
+}
+
+.toast {
+    bottom: 100px;
+}
+
+.toast-top {
+    top: 100px;
+}

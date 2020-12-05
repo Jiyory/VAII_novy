@@ -1,0 +1,37 @@
+<div class="container-full menu-back">
+    <div class="container">
+        <div class="row hide-xm">
+            <span class="tmaxi pd-10 show-list"><i ng-click="openMenu()" class="fas fa-list-ul"></i></span>
+        </div>
+        <div id="row-menu" class="column row-xm">
+            <div class="col-2 hide showinl-xm">
+                <div class="row">
+                    <div class="col-xm-2 col-1">
+                        <img class="round-10" src="client/design/logo.png">
+                    </div>
+                    <div class="col-xm-10 col-11 pd-15">
+                        <a href="#!" class="b">{{ title }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8" ng-show="isMenuShown">
+                <div class="show showbl-xm pd-10" ng-repeat="item in menu">
+                    <i class="{{ item.icon }}"></i>
+                    <a class="tbig b" ng-href="{{item.page}}">{{ item.text }}</a>
+                </div>
+            </div>
+            <div class="col-2 pd-15" ng-show="isMenuShown">
+                <div ng-if="userData.logged">
+                    <div class="show showbl-xm pd-10" ng-repeat="item in menuSecond | limitTo: 2">
+                        <i class="{{ item.icon }}"></i>
+                        <a class="b" ng-href="#!">{{ item.text }}</a>
+                    </div>
+                </div>
+                <div ng-if="!userData.logged">
+                    <i class="{{ menuSecond[2].icon }}"></i>
+                        <a class="b" ng-href="#!">{{ menuSecond[2].text }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

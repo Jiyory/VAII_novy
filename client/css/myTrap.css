@@ -60,6 +60,7 @@ body {
     width: 100%;
     height: 100%;
     font-size: 14px;
+    background-color: #DDD;
 }
 
 h1 { font-size: 35px; padding: 10px; margin: 0px; }
@@ -232,6 +233,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-xs-50 { width: 50%; }
     .w-xs-33 { width: 33.33%; }
     .w-xs-25 { width: 25%; }
+
+    .tmaxi-xs { font-size: 36px; }
+    .tbig-xs { font-size: 24px; }
+    .tprim-xs { font-size: 18px; }
+    .tsec-xs { font-size: 14px; }
 }
 
 @media only screen and (min-width: 576px) { /* SM */
@@ -278,6 +284,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-sm-50 { width: 50%; }
     .w-sm-33 { width: 33.33%; }
     .w-sm-25 { width: 25%; }
+
+    .tmaxi-sm { font-size: 36px; }
+    .tbig-sm { font-size: 24px; }
+    .tprim-sm { font-size: 18px; }
+    .tsec-sm { font-size: 14px; }
 }
 
 @media only screen and (min-width: 768px) { /* MD */
@@ -323,6 +334,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-md-50 { width: 50%; }
     .w-md-33 { width: 33.33%; }
     .w-md-25 { width: 25%; }
+
+    .tmaxi-md { font-size: 36px; }
+    .tbig-md { font-size: 24px; }
+    .tprim-md { font-size: 18px; }
+    .tsec-md { font-size: 14px; }
 }
 
 @media only screen and (min-width: 992px) { /* XM */
@@ -368,6 +384,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-xm-50 { width: 50%; }
     .w-xm-33 { width: 33.33%; }
     .w-xm-25 { width: 25%; }
+
+    .tmaxi-xm { font-size: 36px; }
+    .tbig-xm { font-size: 24px; }
+    .tprim-xm { font-size: 18px; }
+    .tsec-xm { font-size: 14px; }
 }
 
 @media only screen and (min-width: 1200px) { /* LG */
@@ -413,6 +434,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-lg-50 { width: 50%; }
     .w-lg-33 { width: 33.33%; }
     .w-lg-25 { width: 25%; }
+
+    .tmaxi-lg { font-size: 36px; }
+    .tbig-lg { font-size: 24px; }
+    .tprim-lg { font-size: 18px; }
+    .tsec-lg { font-size: 14px; }
 }
 
 @media only screen and (min-width: 1900px) { /* XL */
@@ -458,6 +484,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-xl-50 { width: 50%; }
     .w-xl-33 { width: 33.33%; }
     .w-xl-25 { width: 25%; }
+
+    .tmaxi-xl { font-size: 36px; }
+    .tbig-xl { font-size: 24px; }
+    .tprim-xl { font-size: 18px; }
+    .tsec-xl { font-size: 14px; }
 }
 
 @media only screen and (min-width: 2500px) { /* 2K */
@@ -503,6 +534,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-2k-50 { width: 50%; }
     .w-2k-33 { width: 33.33%; }
     .w-2k-25 { width: 25%; }
+
+    .tmaxi-2k { font-size: 36px; }
+    .tbig-2k { font-size: 24px; }
+    .tprim-2k { font-size: 18px; }
+    .tsec-2k { font-size: 14px; }
 }
 
 @media only screen and (min-width: 3800px) { /* 4K */
@@ -548,6 +584,11 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-4k-50 { width: 50%; }
     .w-4k-33 { width: 33.33%; }
     .w-4k-25 { width: 25%; }
+
+    .tmaxi-4k { font-size: 36px; }
+    .tbig-4k { font-size: 24px; }
+    .tprim-4k { font-size: 18px; }
+    .tsec-4k { font-size: 14px; }
 }
 
 @media only screen and (min-width: 8100px) { /* 8K */
@@ -592,4 +633,9 @@ th.col-12, td.col-12 { width: 100.00%; }
     .w-8k-50 { width: 50%; }
     .w-8k-33 { width: 33.33%; }
     .w-8k-25 { width: 25%; }
+
+    .tmaxi-8k { font-size: 36px; }
+    .tbig-8k { font-size: 24px; }
+    .tprim-8k { font-size: 18px; }
+    .tsec-8k { font-size: 14px; }
 }

@@ -15,9 +15,7 @@ app.filter("trust", ['$sce', function($sce) {
  */
 app.factory("UserData", function () {   // sluzi ako zdielane data - vytvori sa len 1x
     return {
-        name: "",
-        admin: true,
-        logged: false,
+        user: { logged: false }
     }
 });
 
@@ -54,20 +52,10 @@ app.factory("WebPage", function () {
                 icon: "fas fa-images"
             }
         ],
-        menuSecond: [
-            {
-                text: "Prihlásenie",
-                icon: "fas fa-user-tie"
-            },
-            {
-                text: "Registrácia",
-                icon: "fas fa-user-plus"
-            },
-            {
-                text: "Účet",
-                icon: "fas fa-user-cog"
-            }
-        ],
+        menuSecond: {
+            text: "Účet",
+            icon: "fas fa-user-cog"
+        },
 
         setActive: function(id) {
             var cid = 0;
@@ -91,7 +79,7 @@ app.config(function($routeProvider) {
         }
     })
     .when("/technology", {
-        templateUrl : "client/pages/home.html",
+        templateUrl : "client/pages/technology.html",
         /*controller: function($scope, $stateParams) {
             $scope.portfolioId = $stateParams.portfolioId;
         },*/

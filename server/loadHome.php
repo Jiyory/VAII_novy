@@ -12,7 +12,7 @@
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "SELECT * FROM home";
+    $sql = "SELECT h_id, header, text, fname, lname, time, icon FROM home JOIN users USING (u_id)";
     $res = $conn->query($sql);
     $rows = array();
     while ($data = $res->fetch(PDO::FETCH_ASSOC)) {

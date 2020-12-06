@@ -67,3 +67,7 @@
 .green {
     color: #090;
 }
+
+.click {
+    cursor: pointer;
+}

@@ -9,6 +9,11 @@
             <h1>Nadpis</h1>
         </div>
     </div>-->
+    <div class="row tcenter">
+        <div class="col-12">
+            <h1><i class="fas fa-plus-square click" ng-if="user.admin" ng-click="add()"></i></h1>
+        </div>
+    </div>
     <div class="column row-xm tjust" ng-if="!loading" ng-repeat="itm in cards track by $index">
         <div class="col pd-10 mg-20 card" ng-repeat="item in cards[$index]">
             <img class="w-100" ng-src="client/design/card{{ item.h_id }}.jpg" ng-if="itm.length == 3">
@@ -17,7 +22,13 @@
             <h3><i class="{{ item.icon }} mg-10"></i> {{ item.header }}</h3>
             <span class="line"></span>
                 {{ item.text }}
-            <span class="line"></span>
+                <span class="line"></span>
+                <span class="show tright">Pridal {{ item.fname }} {{ item.lname }} - {{ item.time }}</span>
+                <span class="line"></span>
+            <i class="fas fa-trash-alt click fleft pd-10 red" ng-if="user.admin" ng-click="delete(item)"></i>
+            <i class="fas fa-edit click fright pd-10 green" ng-if="user.admin" ng-click="edit(item)"></i>
         </div>
     </div>
 </div>
+
+<div id="mod-home" ng-controller="modHomeCTRL"></div>

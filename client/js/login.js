@@ -5,7 +5,7 @@ app.controller("loginCTRL", function($scope, $sce, $templateRequest, $compile, m
 
     if (sessionStorage.user != null) {
         var data = angular.fromJson(sessionStorage.user);
-        console.log(sessionStorage.user);
+        //console.log(sessionStorage.user);
         UserData.user.u_id = data.u_id;
         UserData.user.email = data.email;
         UserData.user.admin = data.admin;
@@ -85,6 +85,7 @@ app.controller("loginCTRL", function($scope, $sce, $templateRequest, $compile, m
                 UserData.user.logged = true;
                 sessionStorage.user = angular.toJson(UserData.user);
                 modalLogin.hideLogin();
+                $scope.errorMessageLogin = "";
             } else {
                 $scope.errorMessageLogin = "Nepodarilo sa prihlasit! Skontrolujte udaje!";
             }
@@ -96,7 +97,7 @@ app.controller("loginCTRL", function($scope, $sce, $templateRequest, $compile, m
             $scope.errorMessageRegister = "Nemozno sa zaregistrovat! Skontrolujte udaje.";
             return;
         }
-        $scope.errorMessageLogin = "Registrujem...";
+        $scope.errorMessageRegister = "Registrujem...";
         $scope.pData = $.param({
             mail: $scope.registerData.mail,
             pass: $scope.registerData.pass,
@@ -113,7 +114,11 @@ app.controller("loginCTRL", function($scope, $sce, $templateRequest, $compile, m
         }).then(function(value) {
             console.log(value.data);
             if (value.data == "true") {
-                
+                $scope.switch();
+                $scope.errorMessageLogin = "Registracia uspesna. Mozete sa prihlasit.";
+                $scope.errorMessageRegister = "";
+            } else {
+                $scope.errorMessageRegister = "Nepodarilo sa zaregistrovat. Pravdepodobne uz tento mail existuje!";
             }
         }, function() {});
     }
@@ -134,7 +139,6 @@ app.controller("loginCTRL", function($scope, $sce, $templateRequest, $compile, m
     };
 
     $scope.checkInputRegister = function() {
-        console.log("sdgsdg");
         var mail = $scope.registerData.mail;
         var pass = $scope.registerData.pass;
         var pass2 = $scope.registerData.pass2;
@@ -185,7 +189,7 @@ app.controller("loginCTRL", function($scope, $sce, $templateRequest, $compile, m
 
 app.factory("modalLogin", function () {
     return {
-        showModal: true,
+        showModal: false,
 
         showLogin: function() {
             this.showModal = true;

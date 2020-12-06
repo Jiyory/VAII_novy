@@ -18,11 +18,18 @@
         <!-- MOJE JS -->
         <script type="text/javascript" src="client/js/app.js"></script>
         <script type="text/javascript" src="client/js/topMenu.js"></script>
+        <script type="text/javascript" src="client/js/footer.js"></script>
+        <script type="text/javascript" src="client/js/home.js"></script>
+
+        <script type="text/javascript" src="client/js/login.js"></script>
         <!-- OTHER HEAD -->
         <title ng-controller="titleCTRL">{{ title }} - {{ route }}</title>
     </head>
     <body class="tprim" ng-controller="mainCTRL">
         <div id="top-menubox" ng-controller="topMenuCTRL"></div>
         <div ng-view></div>
+        <div id="footer" ng-controller="footerCTRL"></div>
+
+        <div id="mod-login" ng-controller="loginCTRL"></div>
     </body>
 </html>

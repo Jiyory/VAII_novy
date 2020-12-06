@@ -1,13 +1,13 @@
 
 /*
- * Kontroler pre titul stranky
+ * Kontroler pre menu stranky
  */
-app.controller("topMenuCTRL", function($scope, $sce, $templateRequest, $compile, $window, $http, WebPage, UserData) {
+app.controller("topMenuCTRL", function($scope, $sce, $templateRequest, $compile, $window, $http, WebPage, UserData, modalLogin) {
     
     $scope.title = WebPage.title;
     $scope.menu = WebPage.menu;
     $scope.menuSecond = WebPage.menuSecond;
-    $scope.userData = UserData;
+    $scope.user = UserData.user;
 
     $scope.isMenuShown = true;
 
@@ -23,7 +23,6 @@ app.controller("topMenuCTRL", function($scope, $sce, $templateRequest, $compile,
 
     /* Pretoze funkcii dole chvilu trva kym sa vzpamata :D */
     $scope.$watch('windowWidth', function(newVal, oldVal) {
-        console.log("test" + newVal);
         if (newVal >= 992) {
             $scope.isMenuShown = true;
         } else {
@@ -37,4 +36,14 @@ app.controller("topMenuCTRL", function($scope, $sce, $templateRequest, $compile,
         $scope.windowWidth = $window.innerWidth;
         $scope.$apply();
     });
+
+    $scope.showLogin = function() {
+        modalLogin.showLogin();
+    };
+
+    $scope.removeLogin = function() {
+        UserData.user.logged = false;
+        UserData.user.admin = false;
+        delete sessionStorage.user;
+    }
 });

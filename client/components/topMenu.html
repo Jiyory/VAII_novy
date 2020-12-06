@@ -15,21 +15,16 @@
                 </div>
             </div>
             <div class="col-8" ng-show="isMenuShown">
-                <div class="show showbl-xm pd-10" ng-repeat="item in menu">
+                <div class="show showbl-xm pd-10 tmaxi tbig-xm" ng-repeat="item in menu">
                     <i class="{{ item.icon }}"></i>
-                    <a class="tbig b" ng-href="{{item.page}}">{{ item.text }}</a>
+                    <a class="b" ng-href="{{item.page}}">{{ item.text }}</a>
                 </div>
             </div>
-            <div class="col-2 pd-15" ng-show="isMenuShown">
-                <div ng-if="userData.logged">
-                    <div class="show showbl-xm pd-10" ng-repeat="item in menuSecond | limitTo: 2">
-                        <i class="{{ item.icon }}"></i>
-                        <a class="b" ng-href="#!">{{ item.text }}</a>
-                    </div>
-                </div>
-                <div ng-if="!userData.logged">
-                    <i class="{{ menuSecond[2].icon }}"></i>
-                        <a class="b" ng-href="#!">{{ menuSecond[2].text }}</a>
+            <div class="col-2" ng-show="isMenuShown">
+                <div class="tbig tprim-xm pd-15">
+                    <i class="{{ menuSecond.icon }}"></i>
+                    <a ng-click="showLogin()" class="b" ng-if="!user.logged">{{ menuSecond.text }}</a>
+                    <a ng-click="removeLogin()" class="b" ng-if="user.logged">{{ user.fname }} {{ user.lname }}</a>
                 </div>
             </div>
         </div>

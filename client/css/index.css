@@ -9,6 +9,7 @@
 
 .menu-back a:hover {
     color: #999;
+    cursor: pointer;
 }
 
 .menu-back i {
@@ -23,4 +24,38 @@
 
 .menu-back .show-list:hover {
     cursor: pointer;
+}
+
+.footer {
+    background-color: #333;
+    color: #AAA;
+}
+
+.footer a {
+    color: #CCC;
+    transition: 1s;
+}
+
+.footer a:hover {
+    color: #999;
+    cursor: pointer;
+}
+
+.footer i {
+    color: #FFF;
+}
+
+.content {
+    background-color: #FFF;
+}
+
+.card img, .card-techn img {
+    border-radius: 15px;
+    float: left;
+    margin-right: 20px;
+}
+
+.card, .card-techn {
+    background-color: #AAA;
+    border-radius: 10px;
 }

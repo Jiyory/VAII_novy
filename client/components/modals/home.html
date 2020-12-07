@@ -15,7 +15,6 @@
             <div class="col-1 tbig"></div>
             <div class="col-8">
                 <input class="w-100" type="text" placeholder="id" ng-model="modal.data.id" ng-change="checkInputLogin()">
-                <img class="w-100" ng-src="client/design/card{{ modal.data.id }}.jpg">
             </div>
             <div class="col-1 tbig">
                 <i class="fas fa-check green" ng-if="!logErr[0]"></i>
@@ -26,9 +25,7 @@
         <div class="row pd-10">
             <div class="col-1 tbig"></div>
             <div class="col-8">
-                <!--<input class="w-100" type="text" placeholder="Obrazok" ng-model="modal.data.img" ng-change="checkInputLogin()">-->
-                <!--<img class="w-90" ng-src="client/design/card{{ modal.data.id }}.jpg"-->
-                <input type = "file" file-model = "myFile"/>
+                <input type="file" id="imgUpload" file-model="modal.data.img" accept="image/png, image/jpeg">
             </div>
             <div class="col-1 tbig">
                 <i class="fas fa-check green" ng-if="!logErr[0]"></i>
@@ -66,6 +63,15 @@
             <div class="col-1 tbig">
                 <i class="fas fa-check green" ng-if="!logErr[0]"></i>
                 <i class="fas fa-times red" ng-if="logErr[0]"></i>
+            </div>
+        </div>
+
+        <div class="row pd-10">
+            <div class="col-1 tbig"></div>
+            <div class="col-8">
+                {{ errorMessage }}
+            </div>
+            <div class="col-1 tbig">
             </div>
         </div>
         <span class="line"></span>

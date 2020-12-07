@@ -28,7 +28,6 @@ app.controller("homeCTRL", function($scope, $http, UserData, modalHome) {
             $scope.loading = false;
         }, function() { });
     };
-    $scope.load();
 
     $scope.edit = function(item) {
         modalHome.show();
@@ -59,12 +58,18 @@ app.controller("homeCTRL", function($scope, $http, UserData, modalHome) {
                 }
             }, function() {});
         }
-        //modalHome.show();
     };
+
+    $scope.$watch(function() { return modalHome.showModal; }, function(newValue, oldValue) {
+        if ( newValue == false ) {
+            $scope.load(); // vola sa aj po nacitani stranky
+        }
+    });
 });
 
 app.controller("modHomeCTRL", function($scope, $http, UserData, modalHome, $sce, $templateRequest, $compile) {
     $scope.modal = modalHome;
+    $scope.errorMessage = "";
 
     /* Nacitanie html stranky */
     var loadAPI = $sce.getTrustedResourceUrl('client/components/modals/home.html');
@@ -81,8 +86,61 @@ app.controller("modHomeCTRL", function($scope, $http, UserData, modalHome, $sce,
     };
 
     $scope.edit = function() {
-
+        var file = document.querySelector('#imgUpload').files[0];
+        if (file != null) {
+            getBase64(file).then(function(data) {
+                //console.log(data);
+                data = data.replace(/^data:image\/\w+;base64,/, ""); // magia :D odstrani texty navise...
+                $scope.editSend(data);
+            });
+        } else {
+            $scope.editSend(null);
+        }
     };
+
+    $scope.editSend = function(data) {
+        if (data == null) {
+            $scope.pData = $.param({
+                h_id: $scope.modal.data.id,
+                icon: $scope.modal.data.icon,
+                header: $scope.modal.data.header,
+                text: $scope.modal.data.text,
+                u_id: UserData.user.u_id
+            });
+        } else {
+            $scope.pData = $.param({
+                h_id: $scope.modal.data.id,
+                img: data,
+                icon: $scope.modal.data.icon,
+                header: $scope.modal.data.header,
+                text: $scope.modal.data.text,
+                u_id: UserData.user.u_id
+            });
+        }
+        $http({
+            method: 'POST',
+            url: 'server/homeEdit.php',
+            data: $scope.pData,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'} // musi byt, inak to neposiela data
+        }).then(function(value) {
+            //console.log(value.data);
+            if (value.data == "true") {
+                $scope.hideModal();
+                // TODO reload
+            } else {
+                $scope.errorMessage = "Vyskytol sa problem. Skuste to neskor znova.";
+            }
+        }, function() { });
+    } 
+
+    function getBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+        });
+    }
 });
 
 app.factory("modalHome", function () {
@@ -91,7 +149,7 @@ app.factory("modalHome", function () {
         edit: false,
         data: {
             id: 0,
-            img: "",
+            img: null,
             icon: "",
             header: "",
             text: ""
@@ -108,7 +166,7 @@ app.factory("modalHome", function () {
         clearParam: function() {
             this.edit = false;
             this.data.id = 0;
-            this.data.img = "";
+            this.data.img = null;
             this.data.icon = "";
             this.data.header = "";
             this.data.text = "";
@@ -117,7 +175,7 @@ app.factory("modalHome", function () {
         setParam: function(item) {
             this.edit = true;
             this.data.id = item.h_id;
-            this.data.img = item.img;
+            this.data.img = null;
             this.data.icon = item.icon;
             this.data.header = item.header;
             this.data.text = item.text;

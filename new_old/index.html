@@ -14,15 +14,22 @@
         <!-- MOJE CSS -->
         <link rel="stylesheet" href="client/css/myTrap.css" />
         <link rel="stylesheet" href="client/css/components.css" />
-        <link rel="stylesheet" href="client/css/style.css" />
+        <link rel="stylesheet" href="client/css/index.css" />
         <!-- MOJE JS -->
         <script type="text/javascript" src="client/js/app.js"></script>
+        <script type="text/javascript" src="client/js/topMenu.js"></script>
+        <script type="text/javascript" src="client/js/footer.js"></script>
+        <script type="text/javascript" src="client/js/home.js"></script>
+
+        <script type="text/javascript" src="client/js/login.js"></script>
         <!-- OTHER HEAD -->
         <title ng-controller="titleCTRL">{{ title }} - {{ route }}</title>
     </head>
-    <body>
-        <div id="top" ng-controller="topCTRL"></div>
-        <div id="mid" ng-controller="midCTRL"></div>
-        <div id="bot" ng-controller="botCTRL"></div>
+    <body class="tprim" ng-controller="mainCTRL">
+        <div id="top-menubox" ng-controller="topMenuCTRL"></div>
+        <div ng-view></div>
+        <div id="footer" ng-controller="footerCTRL"></div>
+
+        <div id="mod-login" ng-controller="loginCTRL"></div>
     </body>
 </html>

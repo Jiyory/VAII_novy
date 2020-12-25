@@ -1,19 +1,49 @@
-/* INICIALIZACIA APP */
-var app = angular.module("main", ["ngRoute"]);
+/*
+ * Kontroler pre titul stranky
+ */
+titleCTRL = function($scope, WebPage) {
+    $scope.title = WebPage.title;
+    $scope.route = WebPage.route;
+}
 
 /*
- * Pridava filter na vlozenie html kodu
+ * Cesty web stranky
  */
-app.filter("trust", ['$sce', function($sce) {
-    return function(htmlCode){
-      return $sce.trustAsHtml(htmlCode);
-    }
-}]);
+Routes = function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "client/pages/home.html",
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(0);}
+        }
+    })
+    .when("/technology", {
+        templateUrl : "client/pages/technology.html",
+        /*controller: function($scope, $stateParams) {
+            $scope.portfolioId = $stateParams.portfolioId;
+        },*/
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(1);}
+        }
+    })
+    .when("/products", {
+        templateUrl : "client/pages/home.html",
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(2);}
+        }
+    })
+    .when("/gallery", {
+        templateUrl : "client/pages/home.html",
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(3);}
+        }
+    });
+}
 
 /*
- * Zdielane data o nazve webstranky - tiez staticke udaje
+ * Informacie o uzivatelovi
  */
-app.factory("UserData", function () {   // sluzi ako zdielane data - vytvori sa len 1x
+UserData = function () {   // sluzi ako zdielane data - vytvori sa len 1x
     return {
         user: { logged: false }
     }
@@ -22,7 +52,7 @@ app.factory("UserData", function () {   // sluzi ako zdielane data - vytvori sa 
 /*
  * Zdielane data o nazve webstranky - tiez staticke udaje
  */
-app.factory("WebPage", function () {
+WebPage = function () {
     return {
         title: "VPGum",
         route: "HOME",
@@ -67,50 +97,8 @@ app.factory("WebPage", function () {
     }
 });
 
-/*
- * Cesty webstranky
- */ 
-app.config(function($routeProvider) {
-    $routeProvider
-    .when("/", {
-        templateUrl : "client/pages/home.html",
-        resolve: {
-            init: function(WebPage) { WebPage.setActive(0);}
-        }
-    })
-    .when("/technology", {
-        templateUrl : "client/pages/technology.html",
-        /*controller: function($scope, $stateParams) {
-            $scope.portfolioId = $stateParams.portfolioId;
-        },*/
-        resolve: {
-            init: function(WebPage) { WebPage.setActive(1);}
-        }
-    })
-    .when("/products", {
-        templateUrl : "client/pages/home.html",
-        resolve: {
-            init: function(WebPage) { WebPage.setActive(2);}
-        }
-    })
-    .when("/gallery", {
-        templateUrl : "client/pages/home.html",
-        resolve: {
-            init: function(WebPage) { WebPage.setActive(3);}
-        }
-    });
-});
-
-/*
- * Kontroler pre titul stranky
- */
-app.controller("titleCTRL", function($scope, WebPage) {
-    $scope.title = WebPage.title;
-    $scope.route = WebPage.route;
-});
-
-/*
- * Kontroler pre celu stranku
- */
-app.controller("mainCTRL", function($scope) {
-});
+var app = angular.module("main", ["ngRoute"]);
+app.config(Routes);
+app.factory("WebPage", WebPage);
+app.factory("UserData", UserData);
+app.controller("titleCTRL", titleCTRL);

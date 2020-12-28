@@ -47,7 +47,7 @@ UserData = function () {   // sluzi ako zdielane data - vytvori sa len 1x
     return {
         user: { logged: false }
     }
-});
+};
 
 /*
  * Zdielane data o nazve webstranky - tiez staticke udaje
@@ -82,10 +82,20 @@ WebPage = function () {
                 icon: "fas fa-images"
             }
         ],
-        menuSecond: {
-            text: "Účet",
-            icon: "fas fa-user-cog"
-        },
+        menuSecond: [
+            {
+                text: "Účet",
+                icon: "fas fa-user-cog",
+                menu: [
+                    {
+                        text: "Prihlásenie",
+                    },
+                    {
+                        text: "Registrácia",
+                    }
+                ]
+            }
+        ],
 
         setActive: function(id) {
             var cid = 0;
@@ -95,7 +105,7 @@ WebPage = function () {
             });
         }
     }
-});
+};
 
 var app = angular.module("main", ["ngRoute"]);
 app.config(Routes);

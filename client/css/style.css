@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "Grawtrac";
+    src: url("fonts/gravtrac compressed bd.ttf");
+}
+
+@font-face {
+    font-family: "Reguloza";
+    src: url("fonts/Reguloza-Regular.ttf");
+}
+
+.top-bar {
+    background: rgb(3,0,50);
+    background: linear-gradient(153deg, rgba(3,0,50,1) 23%, rgba(3,3,175,1) 44%, rgba(0,212,255,1) 100%);
+    border-bottom: 3px solid #DDD;
+}
+
+.logo {
+    width: 74px;
+    height: 74px;
+    border-radius: 15px;
+    margin: 13px 3px;
+    box-shadow: 1px 1px 5px #999;
+}
+
+.logo-text {
+    font-size: 33px;
+    line-height: 100px;
+    margin-left: 5px;
+    color: #FFF;
+    font-weight: bold;
+    font-family: Times New Roman, Times, serif;
+}
+
+.logo-text::after { /* zdroj: https://codepen.io/imbaniac/pen/ZOBoxJ */
+    line-height: normal;
+    margin-top: -40px;
+    margin-left: 7px;
+    font-style: italic;
+    content: "VP-Gum";
+    display:flex;
+    transform:rotateX(180deg);
+    background-image: linear-gradient(180deg,rgba(255,255,255,.0) 5%,rgba(255,255,255,.5));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.button {
+    position: relative;
+    color: #FFF;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: Times New Roman, Times, serif;
+    font-size: 22px;
+    background: rgb(0, 51, 170);
+    background: linear-gradient(153deg, rgba(3,0,50,1) 23%, rgba(3,3,120,1) 44%, rgba(3,0,50,1) 100%);
+    border: 1px solid #777;
+    border-bottom: none;
+    padding: 10px 20px 10px 20px;
+}
+
+.button-active {
+    color: #00A;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+    display: inline-block;
+    font-family: Times New Roman, Times, serif;
+    font-size: 25px;
+    background: rgb(233, 233, 233);
+    background: linear-gradient(153deg, rgba(221,221,221,1) 23%, rgba(255,255,255,1) 44%, rgba(221,221,221,1) 100%);
+    padding: 20px 25px 10px 25px;
+}
+
+.button:hover {
+    text-shadow: 1px 1px 0px #999, -1px 1px 0px #999, 1px -1px 0px #999, -1px -1px 0px #999;
+}
+
+.left {
+    list-style-type: none;
+    color: #EEE;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Times New Roman, Times, serif;
+    padding: 5px 25px;
+    margin-top: 25px;
+}
+
+.left li ul {
+    list-style-type: none;
+    position: absolute;
+    margin-left: -30px;
+    max-height: 0px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid #FFF;
+    transition: max-height 1s;
+    z-index: 1;
+}
+
+.left li ul li {
+    background-color: #0CF;
+    padding: 5px 25px;
+    margin-left: -45px;
+    color: #444;
+    text-shadow: none;
+}
+
+.left li:hover ul {
+    max-height: 200px;
+}
+
+.left li ul li:hover  {
+    text-shadow: 1px 1px 0px #FFF, -1px 1px 0px #FFF, 1px -1px 0px #FFF, -1px -1px 0px #FFF;
+}
+
+@media only screen and (min-width: 1200px) {
+    .menu {
+        position: static; 
+        margin-top: 41px;
+    }
+}
+
+@media only screen and (max-width: 575px) { 
+    .left {
+        margin-top: 5px;
+    }
+
+    .left li ul {
+        position: static;
+        border: none;
+    }
+
+    .left li ul li {
+        background-color: transparent;
+        color: #FFF;
+        padding: 10px 40px;
+    }
+
+    .left li ul li:hover {
+        text-shadow: unset;
+        color: #888;
+    }
+}

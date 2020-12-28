@@ -1,0 +1,61 @@
+<div class="container-full top-bar">
+    <div class="column row-lg">
+        <div class="col-3">
+            <div class="row">
+                <div class="col-1 col-lg-4">
+                    <img class="logo fright" src="client/design/logo.png">
+                </div>
+                <div class="col-9 col-lg-8">
+                    <div class="logo-text">VP-Gum</div>
+                </div>
+                <div class="col-4 hide show-sm hide-lg">
+                    <ul class="left showbl"> <!-- pre nizke rozlisenia okrem XS -->
+                        <li ng-repeat="item in leftMenu">
+                            <i class="{{item.icon}}"></i>
+                            {{item.text}}
+                            <i class="fas fa-angle-down" ng-if="item.menu != null"></i>
+                            <ul ng-if="item.menu != null">
+                                <li ng-repeat="subitem in item.menu">
+                                    <i class="{{item.icon}}" ng-if="subitem.icon != null"></i>
+                                    {{subitem.text}}
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xm-7 menu">
+            <div class="showinl-md" ng-repeat="item in menu">
+                <a class="{{getClass(item)}} show showbl-md w-md-0 round-none round-md-top-10" href="{{item.page}}">
+                    <i class="{{item.icon}}"></i>
+                    {{item.text}}
+                </a>
+            </div>
+        </div>
+        <div class="col-2 hide show-xs show-lg">
+            <ul class="left showbl"> <!-- pre vysoke rozlisenia a XS -->
+                <li ng-repeat="item in leftMenu">
+                    <i class="{{item.icon}}"></i>
+                    {{item.text}}
+                    <i class="fas fa-angle-down" ng-if="item.menu != null"></i>
+                    <ul ng-if="item.menu != null">
+                        <li ng-repeat="subitem in item.menu">
+                            <i class="{{item.icon}}" ng-if="subitem.icon != null"></i>
+                            {{subitem.text}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-full under-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img class="w-100" src="client/design/top_img.jpg">
+            </div>
+        </div>
+    </div>
+</div>

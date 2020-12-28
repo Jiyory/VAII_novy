@@ -12,28 +12,24 @@
         <!-- AWESOME FONT -->
         <script src="https://kit.fontawesome.com/18578e73ef.js" crossorigin="anonymous"></script>
         <!-- MOJE CSS -->
-        <link rel="stylesheet" href="client/css/components.css" />
-        <link rel="stylesheet" href="client/css/style.css" />
         <link rel="stylesheet" href="client/css/myTrap.css" />
+        <link rel="stylesheet" href="client/css/components.css" />
+        <link rel="stylesheet" href="client/css/index.css" />
         <!-- MOJE JS -->
         <script type="text/javascript" src="client/js/app.js"></script>
-        <script type="text/javascript" src="client/js/top.js"></script>
+        <script type="text/javascript" src="client/js/topMenu.js"></script>
+        <script type="text/javascript" src="client/js/footer.js"></script>
+        <script type="text/javascript" src="client/js/home.js"></script>
+
+        <script type="text/javascript" src="client/js/login.js"></script>
         <!-- OTHER HEAD -->
         <title ng-controller="titleCTRL">{{ title }} - {{ route }}</title>
     </head>
-    <body>
-        <div id="top" ng-controller="topCTRL"></div>
-        <div id="mid"></div>
-        <div id="bot"></div>
+    <body class="tprim" ng-controller="mainCTRL">
+        <div id="top-menubox" ng-controller="topMenuCTRL"></div>
+        <div ng-view></div>
+        <div id="footer" ng-controller="footerCTRL"></div>
 
-        <div class="hide show-8k">8k</div>
-        <div class="hide show-4k">4k</div>
-        <div class="hide show-2k">2k</div>
-        <div class="hide show-xl">XL</div>
-        <div class="hide show-lg">LG</div>
-        <div class="hide show-xm">XM</div>
-        <div class="hide show-md">MD</div>
-        <div class="hide show-sm">SM</div>   
-        <div class="hide show-xs">XS</div>        
+        <div id="mod-login" ng-controller="loginCTRL"></div>
     </body>
 </html>

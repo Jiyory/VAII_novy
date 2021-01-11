@@ -45,6 +45,54 @@
                 $pstatement->execute();
             }
         }
+
+        function loadHome() {
+            $db = "SELECT lname, fname, tid, header, text, image, icon, create_date FROM texts JOIN users USING (uid) WHERE page=true";
+            //$pstatement = $this->conn->prepare($db);
+            //$pstatement->execute();
+            $res = $this->conn->query($db);
+            //echo $res;
+            while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $data; // push
+            }
+            return $rows;
+        }
+
+        function loadTechnol() {
+            $db = "SELECT lname, fname, tid, header, text, image, icon, create_date FROM texts JOIN users USING (uid) WHERE page=false";
+            //$pstatement = $this->conn->prepare($db);
+            //$pstatement->execute();
+            $res = $this->conn->query($db);
+            //echo $res;
+            while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $data; // push
+            }
+            return $rows;
+        }
+
+        function loadGallery() {
+            $db = "SELECT * FROM gallery";
+            //$pstatement = $this->conn->prepare($db);
+            //$pstatement->execute();
+            $res = $this->conn->query($db);
+            //echo $res;
+            while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $data; // push
+            }
+            return $rows;
+        }
+
+        function loadProducts() {
+            $db = "SELECT * FROM products";
+            //$pstatement = $this->conn->prepare($db);
+            //$pstatement->execute();
+            $res = $this->conn->query($db);
+            //echo $res;
+            while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
+                $rows[] = $data; // push
+            }
+            return $rows;
+        }
     }
 ?>
 

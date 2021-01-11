@@ -60,16 +60,27 @@
             pid INT AUTO_INCREMENT NOT NULL,
             name TEXT NOT NULL,
             amount_p INT NOT NULL,
+            category TEXT,
+            zmes TEXT,
+            d_out FLOAT, /* priemer vonkajsi */
+            d_in FLOAT, /* priemer vnutorny */
+            length FLOAT, /* dlzka */
+            sha FLOAT, /* tvrdost */
+            imprints INT, /* pocet odtlackov */
+            time INT, /* cas v sekundach */
+            temperature INT, /* teplota */
+            weight INT, /* navážka */
+            final_weight INT, /* vaha vyrobku */
             info_p TEXT,
             create_date_p DATETIME DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (pid)) 
             CHARACTER SET utf8 COLLATE utf8_general_ci";
         $productsData = [
-            "INSERT INTO products VALUES(1, 'Test product 1', 0, 'Info k produktu', CURRENT_TIMESTAMP)",
-            "INSERT INTO products VALUES(2, 'Test product test 2', 5, 'Info k produktu ktore si da uzivatel', CURRENT_TIMESTAMP)",
-            "INSERT INTO products VALUES(3, 'Test test 3', -3, NULL, CURRENT_TIMESTAMP)",
-            "INSERT INTO products VALUES(4, 'Test product 4 test', 8, 'Nic k videniu', CURRENT_TIMESTAMP)",
-            "INSERT INTO products VALUES(5, 'Tp5', 1050, '...', CURRENT_TIMESTAMP)",
+            "INSERT INTO products VALUES(1, 'Test product 1', 0, 'cat1', 'guma', 5.2, 6.8, 7.6, 1, 1, 360, 165, 25, 15, 'Info k produktu', CURRENT_TIMESTAMP)",
+            "INSERT INTO products VALUES(2, 'Test product test 2', 5, 'cat2', 'guma', 5.2, 6.8, 7.6, 1, 1, 360, 165, 25, 15, 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?', CURRENT_TIMESTAMP)",
+            "INSERT INTO products VALUES(3, 'Test test 3', -3, 'cat1', 'guma', 5.2, 6.8, 7.6, 1, 1, 360, 165, 25, 15, NULL, CURRENT_TIMESTAMP)",
+            "INSERT INTO products VALUES(4, 'Test product 4 test', 8, 'cat1', 'guma', 5.2, 6.8, 7.6, 1, 1, 360, 165, 25, 15, 'Nic k videniu', CURRENT_TIMESTAMP)",
+            "INSERT INTO products VALUES(5, 'Tp5', 1050, '...', 'cat2', 'guma', 5.2, 6.8, 7.6, 1, 1, 360, 165, 25, 15, CURRENT_TIMESTAMP)",
             "INSERT INTO changes VALUES(3, 'products', 'Tabulka products vytvorena.', CURRENT_TIMESTAMP)"
         ];
 
@@ -157,7 +168,7 @@
             "INSERT INTO texts VALUES(4, true, 'Nadpis4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, true, 'fas fa-bell', CURRENT_TIMESTAMP)",
             "INSERT INTO texts VALUES(5, false, 'Nadpis1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, true, 'fas fa-bell', CURRENT_TIMESTAMP)", 
             "INSERT INTO texts VALUES(6, false, 'Nadpis2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, true, 'fas fa-bell', CURRENT_TIMESTAMP)",
-            "INSERT INTO texts VALUES(7, false, 'Nadpis3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, true, 'fas fa-bell', CURRENT_TIMESTAMP)",
+            "INSERT INTO texts VALUES(7, false, 'Nadpis3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, false, 'fas fa-bell', CURRENT_TIMESTAMP)",
             "INSERT INTO texts VALUES(8, false, 'Nadpis4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 1, true, 'fas fa-bell', CURRENT_TIMESTAMP)",
             "INSERT INTO changes VALUES(7, 'texts', 'Tabulka texts vytvorena.', CURRENT_TIMESTAMP)"
         ];

@@ -1,0 +1,65 @@
+<div class="container page">
+    <div class="column">
+        <div class="row">
+            <div class="col-12 tcenter page-head mg-20">
+                Zoznam produktov
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-12 tcenter tprim">
+                <b>Utriedit podla</b>
+            </div>
+        </div>-->
+        <!--<div class="row">
+            <div class="col-3"></div>
+            <button class="col-3 btn-prim mg-5">Nazov</button>
+            <button class="col-3 mg-5">Kategoria</button>
+            <button class="col-3 mg-5">Zmes</button>
+            <button class="col-3 mg-5">Hmotnost</button>
+            <div class="col-3"></div>
+        </div>-->
+        <div class="column row-md">
+            <div class="col-2"></div>
+            <div class="col-8 mg-15 tcenter">
+                <div>
+                    <input class="w-100" placeholder="Hladať" ng-model="find">
+                </div>
+            </div>
+            <div class="col-2 mg-15 tcenter">
+                <select class="w-100" name="order" ng-model="order">
+                    <option value="name">Zoradit podla...</option>
+                    <option value="name">Nazov</option>
+                    <option value="category">Kategoria</option>
+                    <option value="zmes">Zmes</option>
+                    <option value="final_weight">Hmotnost</option>
+                  </select>
+            </div>
+        </div>
+        <div class="row product" ng-repeat="item in products | filter: find | orderBy: order">
+            <div class="col-3 pd-5">
+                <img class="w-100" ng-src="client/products/product{{ item.pid }}.jpg" onerror="this.src='client/products/product0.jpg'">
+            </div>
+            <div class="col-9 column pd-10">
+                <div class="row">
+                   <b class="tprim">{{ item.name }}</b>
+                </div>
+                <div class="row mg-15">
+                    <div class="col-4">
+                        <b class="tmid">Kategoria: {{ item.category }}</b>
+                    </div>
+                    <div class="col-4">
+                        <b class="tmid">Zmes: {{ item.zmes }}</b>
+                    </div>
+                    <div class="col-4">
+                        <b class="tmid">Hmotnost: {{ item.final_weight }}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 prod-info tjust">
+                        {{ item.info_p }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

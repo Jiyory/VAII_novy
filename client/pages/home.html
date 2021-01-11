@@ -1,0 +1,33 @@
+<div class="container page home">
+    <div class="row" ng-if="loading">
+        <div class="loader50"></div>
+    </div>
+    <div ng-if="!loading">
+        <div class="row">
+            <div class="col-12 tcenter page-head">
+                Nadpis
+            </div>
+        </div>
+        <div class="column box-top-25 mg-15" ng-repeat="card in cards">
+            <div class="row">
+                <div class="header col-12">
+                    {{ card.header }}
+                </div>
+            </div>
+            <div class="column row-md">
+                <div class="col-md-5 col-lg-3 pd-5 img" ng-if="card.image > 0">
+                    <img ng-src="client/design/texts{{card.tid}}.jpg">
+                </div>
+                <div class="col-0 img" ng-if="card.image == 0"></div>
+                <div class="col-md-7 col-lg-9 pd-15 tjust text">
+                    {{ card.text }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="date col-12">
+                    Pridal {{ card.fname }} {{ card.lname}} dňa {{ card.create_date }}.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

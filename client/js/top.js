@@ -2,7 +2,7 @@ topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, Web
 
     $scope.menu = WebPage.menu;
     $scope.leftMenu = WebPage.menuSecond;
-    console.log($scope.leftMenu);
+    //console.log($scope.leftMenu);
 
     /* Nacitanie html stranky */
     var loadAPI = $sce.getTrustedResourceUrl('client/html/top.html');

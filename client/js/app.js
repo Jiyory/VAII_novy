@@ -13,27 +13,28 @@ Routes = function($routeProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "client/pages/home.html",
+        controller: homeCTRL,
         resolve: {
             init: function(WebPage) { WebPage.setActive(0);}
         }
     })
     .when("/technology", {
-        templateUrl : "client/pages/technology.html",
-        /*controller: function($scope, $stateParams) {
-            $scope.portfolioId = $stateParams.portfolioId;
-        },*/
+        templateUrl : "client/pages/home.html",
+        controller: technologyCTRL,
         resolve: {
             init: function(WebPage) { WebPage.setActive(1);}
         }
     })
     .when("/products", {
-        templateUrl : "client/pages/home.html",
+        templateUrl : "client/pages/products.html",
+        controller: productsCTRL,
         resolve: {
             init: function(WebPage) { WebPage.setActive(2);}
         }
     })
     .when("/gallery", {
-        templateUrl : "client/pages/home.html",
+        templateUrl : "client/pages/gallery.html",
+        controller: galleryCTRL,
         resolve: {
             init: function(WebPage) { WebPage.setActive(3);}
         }

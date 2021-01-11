@@ -11,6 +11,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
         <!-- AWESOME FONT -->
         <script src="https://kit.fontawesome.com/18578e73ef.js" crossorigin="anonymous"></script>
+        <!-- LOADERS -->
+        <link rel="stylesheet" href="client/css/spinners.css" />
         <!-- MOJE CSS -->
         <link rel="stylesheet" href="client/css/components.css" />
         <link rel="stylesheet" href="client/css/style.css" />
@@ -18,12 +20,15 @@
         <!-- MOJE JS -->
         <script type="text/javascript" src="client/js/app.js"></script>
         <script type="text/javascript" src="client/js/top.js"></script>
+        <script type="text/javascript" src="client/js/home.js"></script>
+        <script type="text/javascript" src="client/js/products.js"></script>
+        <script type="text/javascript" src="client/js/gallery.js"></script>
         <!-- OTHER HEAD -->
         <title ng-controller="titleCTRL">{{ title }} - {{ route }}</title>
     </head>
     <body>
         <div id="top" ng-controller="topCTRL"></div>
-        <div id="mid"></div>
+        <div id="mid" ng-view></div>
         <div id="bot"></div>
 
         <div class="hide show-8k">8k</div>
@@ -34,6 +39,6 @@
         <div class="hide show-xm">XM</div>
         <div class="hide show-md">MD</div>
         <div class="hide show-sm">SM</div>   
-        <div class="hide show-xs">XS</div>        
+        <div class="hide show-xs">XS</div>
     </body>
 </html>

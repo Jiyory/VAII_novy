@@ -38,6 +38,20 @@ Routes = function($routeProvider) {
         resolve: {
             init: function(WebPage) { WebPage.setActive(3);}
         }
+    })
+    .when("/login", {
+        templateUrl : "client/pages/login.html",
+        controller: loginCTRL,
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(0);}
+        }
+    })
+    .when("/register", {
+        templateUrl : "client/pages/login.html",
+        controller: registerCTRL,
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(0);}
+        }
     });
 }
 
@@ -90,9 +104,11 @@ WebPage = function () {
                 menu: [
                     {
                         text: "Prihlásenie",
+                        page: "#!/login",
                     },
                     {
                         text: "Registrácia",
+                        page: "#!/register",
                     }
                 ]
             }
@@ -108,8 +124,27 @@ WebPage = function () {
     }
 };
 
+Toast = function($compile, $timeout) {
+    return {
+        timer: null,
+        message: function(msg, time) {
+            $compile($("#toast-top").html(msg).contents());
+            $("#toast-top").addClass("toast-padding");
+            this.timer = $timeout(function() {
+                $("#toast-top").removeClass("toast-padding");
+            }, time * 1000);
+        }
+    };
+};
+
+toastCTRL = function($scope, Toast) {
+    $scope.toast = Toast;
+}
+
 var app = angular.module("main", ["ngRoute"]);
 app.config(Routes);
 app.factory("WebPage", WebPage);
+app.factory("Toast", Toast);
 app.factory("UserData", UserData);
 app.controller("titleCTRL", titleCTRL);
+app.controller("toastCTRL", toastCTRL);

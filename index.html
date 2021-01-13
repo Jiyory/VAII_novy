@@ -23,6 +23,7 @@
         <script type="text/javascript" src="client/js/home.js"></script>
         <script type="text/javascript" src="client/js/products.js"></script>
         <script type="text/javascript" src="client/js/gallery.js"></script>
+        <script type="text/javascript" src="client/js/login.js"></script>
         <!-- OTHER HEAD -->
         <title ng-controller="titleCTRL">{{ title }} - {{ route }}</title>
     </head>
@@ -40,5 +41,9 @@
         <div class="hide show-md">MD</div>
         <div class="hide show-sm">SM</div>   
         <div class="hide show-xs">XS</div>
+
+        <div id="toast-top" class="toast-top" ng-controller="toastCTRL">
+            <b>Meno je prilis kratke!</b>
+        </div>
     </body>
 </html>

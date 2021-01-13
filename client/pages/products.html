@@ -22,7 +22,7 @@
             <div class="col-2"></div>
             <div class="col-8 mg-15 tcenter">
                 <div>
-                    <input class="w-100" placeholder="Hladať" ng-model="find">
+                    <input class="w-100 tcenter" style="padding: 8px 0px;" placeholder="Hladať" ng-model="find">
                 </div>
             </div>
             <div class="col-2 mg-15 tcenter">
@@ -35,15 +35,15 @@
                   </select>
             </div>
         </div>
-        <div class="row product" ng-repeat="item in products | filter: find | orderBy: order">
-            <div class="col-3 pd-5">
+        <div class="row-md column product" ng-repeat="item in products | filter: find | orderBy: order">
+            <div class="col-5 col-lg-3 pd-5">
                 <img class="w-100" ng-src="client/products/product{{ item.pid }}.jpg" onerror="this.src='client/products/product0.jpg'">
             </div>
-            <div class="col-9 column pd-10">
+            <div class="col-7 col-lg-9 column pd-10">
                 <div class="row">
                    <b class="tprim">{{ item.name }}</b>
                 </div>
-                <div class="row mg-15">
+                <div class="row-xm column mg-15">
                     <div class="col-4">
                         <b class="tmid">Kategoria: {{ item.category }}</b>
                     </div>

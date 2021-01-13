@@ -95,7 +95,7 @@ button:hover, button:focus {
     display: block;
 }
 
-.toast, .toast-top {
+.toast {
     position: fixed;
     width: 90%;
     left: 50%;
@@ -113,5 +113,25 @@ button:hover, button:focus {
 }
 
 .toast-top {
-    top: 100px;
+    position: fixed;
+    top: 150px;
+    right: 0px;
+    text-align: justify;
+    display: inline;
+    width: auto;
+    background-color: #777;
+    font-size: 18px;
+    color: #FFF;
+    border-radius: 20px 0px 0px 20px;
+    max-width: 0%;
+    overflow: hidden;
+    transition: 0s;
+}
+
+.toast-padding {
+    padding: 10px 30px;
+    border: 3px solid #111;
+    border-right: none;
+    max-width: 100%;
+    transition: max-width 0s;
 }

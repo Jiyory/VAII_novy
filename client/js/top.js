@@ -1,4 +1,6 @@
-topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, WebPage, UserData) {
+topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, WebPage, UserData, User) {
+
+    $scope.user = User;
 
     $scope.menu = WebPage.menu;
     $scope.leftMenu = WebPage.menuSecond;

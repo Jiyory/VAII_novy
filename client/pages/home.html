@@ -8,24 +8,71 @@
                 Nadpis
             </div>
         </div>
-        <div class="column box-top-25 mg-15" ng-repeat="card in cards">
-            <div class="row">
-                <div class="header col-12">
-                    {{ card.header }}
+        <div class="tright">
+            <i class="far fa-plus-square tbig click add" style="margin-right: 35px;"></i>
+        </div>
+        <div class="column box-top-25 mg-15">
+            <div class="column" ng-if="editing.id == -1">
+                <div class="row">
+                    <input class="col-2 tprim" ng-model="card.icon">
+                    <input class="col-10 tprim" ng-model="card.header">
+                </div>
+                <div class="column row-md">
+                    <div class="col-md-5 col-lg-3 pd-5 img">
+                        <img ng-src="client/design/texts0.jpg">
+                    </div>
+                    <textarea class="col-md-7 col-lg-9 pd-15 tjust text" ng-model="card.text" rows="4"></textarea>
+                </div>
+                <div class="row">
+                    <div class="date col-12">
+                        <span class="tprim" class="edit-btn">
+                            <i ng-click="close(card)" class="fas fa-times-circle click"></i>
+                            <i ng-click="save(card)" class="fas fa-check click edit"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="column row-md">
-                <div class="col-md-5 col-lg-3 pd-5 img" ng-if="card.image > 0">
-                    <img ng-src="client/design/texts{{card.tid}}.jpg">
+        </div>
+        <div class="column box-top-25 mg-15" ng-repeat="card in cards">
+            <div class="column" ng-if="editing.id != card.tid">
+                <div class="row">
+                    <div class="header col-12">
+                        <i class="{{ card.icon }}"></i> {{ card.header }}
+                    </div>
                 </div>
-                <div class="col-0 img" ng-if="card.image == 0"></div>
-                <div class="col-md-7 col-lg-9 pd-15 tjust text">
-                    {{ card.text }}
+                <div class="column row-md">
+                    <div class="col-md-5 col-lg-3 pd-5 img" ng-if="card.image > 0">
+                        <img ng-src="client/design/texts{{card.tid}}.jpg">
+                    </div>
+                    <div class="col-0 img" ng-if="card.image == 0"></div>
+                    <div class="col-md-7 col-lg-9 pd-15 tjust text">
+                        {{ card.text }}
+                    </div>
+                </div>
+            </div>
+            <div class="column" ng-if="editing.id == card.tid">
+                <div class="row">
+                    <input class="col-2 tprim" ng-model="card.icon">
+                    <input class="col-10 tprim" ng-model="card.header">
+                </div>
+                <div class="column row-md">
+                    <div class="col-md-5 col-lg-3 pd-5 img" ng-if="card.image > 0">
+                        <img ng-src="client/design/texts{{card.tid}}.jpg">
+                    </div>
+                    <div class="col-0 img" ng-if="card.image == 0"></div>
+                    <textarea class="col-md-7 col-lg-9 pd-15 tjust text" ng-model="card.text" rows="4"></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="date col-12">
                     Pridal {{ card.fname }} {{ card.lname}} dňa {{ card.create_date }}.
+                    <span class="tprim" class="edit-btn">
+                        <i ng-if="editing.id != card.tid" ng-click="delete(card)" class="far fa-trash-alt click delete"></i>
+                        <i ng-if="editing.id != card.tid" ng-click="edit(card)" class="fas fa-edit click edit"></i>
+
+                        <i ng-if="editing.id == card.tid" ng-click="close(card)" class="fas fa-times-circle click"></i>
+                        <i ng-if="editing.id == card.tid" ng-click="save(card)" class="fas fa-check click edit"></i>
+                    </span>
                 </div>
             </div>
         </div>

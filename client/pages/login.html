@@ -1,0 +1,22 @@
+<div class="container page">
+    <div class="column">
+        <div class="row">
+            <div class="col-12 tcenter page-head mg-20">
+                <span ng-if="login">Prihlásenie</span>
+                <span ng-if="!login">Registrácia</span>
+            </div>
+        </div>
+        <div class="column tcenter">
+            <b class="tprim">Mailova adresa</b>
+            <br>
+            <input type="text" class="w-66 w-md-33 tcenter" ng-model="acc.mail">
+            <br><br>
+            <b class="tprim">Prihlasovacie heslo</b>
+            <br>
+            <input type="password" class="w-66 w-md-33 tcenter" ng-model="acc.pass">
+            <br><br>
+            <button class="btn" ng-click="tryLogin()">Prihlasit</button>
+            <br><br>
+        </div>
+    </div>
+</div>

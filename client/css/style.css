@@ -64,7 +64,7 @@ body {
     font-size: 25px;
     background: rgb(233, 233, 233);
     background: linear-gradient(153deg, rgba(221,221,221,1) 23%, rgba(255,255,255,1) 44%, rgba(221,221,221,1) 100%);
-    padding: 20px 25px 10px 25px;
+    padding: 20px 20px 10px 20px;
 }
 
 .button:hover {
@@ -115,7 +115,7 @@ body {
     text-align: center;
     background: rgb(0, 51, 170);
     background: linear-gradient(153deg, rgba(3,0,50,1) 23%, rgba(3,3,120,1) 44%, rgba(3,0,50,1) 100%);
-    padding: 5px 10px;
+    padding: 5px 5px;
     border-top: 1px solid #555;
 }
 
@@ -207,6 +207,68 @@ body {
     background-color: #DDD;
 }
 
+input .find {
+    padding: 7px 0px; 
+}
+
+.gallery {
+    width: 100%;
+    max-width: 350px;
+    height: 200px;
+    margin: 10px;
+    border: 3px solid #999;
+}
+
+.gallery-shadow {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.gallery-shadow img {
+    max-width: 96%;
+    max-height: 80%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+.gallery-shadow div {
+    width: 96%;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #555;
+    color: #AAA;
+    border-radius: 10px;
+    border: 2px solid #AAA;
+    padding: 10px 0px;
+}
+
+.edit-btn {
+    margin-left: 25px;
+    letter-spacing: 5px;
+}
+
+.click {
+    cursor: pointer;
+}
+
+.delete {
+    color: #F00;
+}
+
+.edit {
+    color: #0F0;
+}
+
+.add {
+    color: #00F;
+}
+
 @media only screen and (max-width: 767px) { /* SM */
     .menu-hide {
         max-height: 50px;
@@ -257,5 +319,9 @@ body {
     .left li ul li:hover {
         text-shadow: unset;
         color: #888;
+    }
+
+    .gallery {
+        margin: 0px;
     }
 }

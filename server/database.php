@@ -39,7 +39,7 @@
             if(!$pstatement->execute()) {
                 echo "Nepodarilo sa vytvorit tabulku.<br>";
                 print_r($this->conn->errorInfo());
-            } //else echo "Uspecne vytvorena tabulka.<br>";
+            }
             foreach ($data as $insert) {
                 $pstatement = $this->conn->prepare($insert);
                 $pstatement->execute();
@@ -48,50 +48,71 @@
 
         function loadHome() {
             $db = "SELECT lname, fname, tid, header, text, image, icon, create_date FROM texts JOIN users USING (uid) WHERE page=true";
-            //$pstatement = $this->conn->prepare($db);
-            //$pstatement->execute();
             $res = $this->conn->query($db);
-            //echo $res;
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $data; // push
+                $rows[] = $data;
             }
             return $rows;
         }
 
         function loadTechnol() {
             $db = "SELECT lname, fname, tid, header, text, image, icon, create_date FROM texts JOIN users USING (uid) WHERE page=false";
-            //$pstatement = $this->conn->prepare($db);
-            //$pstatement->execute();
             $res = $this->conn->query($db);
-            //echo $res;
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $data; // push
+                $rows[] = $data;
             }
             return $rows;
         }
 
         function loadGallery() {
             $db = "SELECT * FROM gallery";
-            //$pstatement = $this->conn->prepare($db);
-            //$pstatement->execute();
             $res = $this->conn->query($db);
-            //echo $res;
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $data; // push
+                $rows[] = $data;
             }
             return $rows;
         }
 
         function loadProducts() {
             $db = "SELECT * FROM products";
-            //$pstatement = $this->conn->prepare($db);
-            //$pstatement->execute();
             $res = $this->conn->query($db);
-            //echo $res;
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
-                $rows[] = $data; // push
+                $rows[] = $data;
             }
             return $rows;
+        }
+
+        function login($mail, $pass) {
+            $sql = $this->conn->prepare("SELECT * FROM users WHERE mail=:mail");
+            $sql->bindValue(':mail', $mail);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                $data = $sql->fetch(PDO::FETCH_ASSOC);
+                $toHash = $pass.$data["salt"];
+                $hash = hash('sha256', $toHash);
+                if ($hash == $data["pass"]) {
+                    return $data;
+                }
+            }
+            return null;
+        }
+
+        function deleteHome($tid) {
+            $sql = $this->conn->prepare("DELETE FROM texts WHERE tid=:tid");
+            $sql->bindValue(':tid', $tid);
+            $sql->execute();
+            return $sql->rowCount();
+        }
+
+        function editHome($tid, $header, $text, $icon, $image) {
+            $sql = $this->conn->prepare("UPDATE texts SET header=:header, text=:text, icon=:icon, image=:image, create_date=CURRENT_TIMESTAMP WHERE tid=:tid");
+            $sql->bindValue(':tid', $tid);
+            $sql->bindValue(':header', $header);
+            $sql->bindValue(':text', $text);
+            $sql->bindValue(':icon', $icon);
+            $sql->bindValue(':image', $image);
+            $sql->execute();
+            return $sql->rowCount();
         }
     }
 ?>

@@ -1,0 +1,22 @@
+<div class="container page">
+    <div class="column">
+        <div class="row">
+            <div class="col-12 tcenter page-head mg-20">
+                Zoznam produktov
+            </div>
+        </div>
+        <div class="column tcenter">
+            <a ng-repeat="img in images" ng-click="showImg(img)">
+                <img class="gallery" ng-src="client/gallery/gal{{img.iid}}.jpg">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="gallery-shadow" ng-if="imgMax != null" ng-click="hideImg()">
+    <img ng-src="client/gallery/gal{{imgMax.iid}}.jpg">
+    <div ng-if="imgMax.header != null || imgMax.text != null">
+        <b class="tbig">{{ imgMax.header }}</b>
+        <br>
+        <b class="tprim">{{ imgMax.text }}</b>
+    </div>
+</div>

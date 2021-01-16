@@ -4,6 +4,7 @@ topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, Web
 
     $scope.menu = WebPage.menu;
     $scope.leftMenu = WebPage.menuSecond;
+    $scope.menuAccount = WebPage.menuAccount;
     //console.log($scope.leftMenu);
 
     /* Nacitanie html stranky */
@@ -18,6 +19,11 @@ topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, Web
         } else {
             return "button";
         }
+    }
+
+    $scope.logout = function() {
+        User.acc = null;
+        sessionStorage.user = null;
     }
 }
 

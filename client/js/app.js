@@ -113,6 +113,28 @@ WebPage = function () {
                 ]
             }
         ],
+        menuAccount: [
+            {
+                text: "Objednávky",
+                icon: null,
+                page: "#!/orders"
+            },
+            {
+                text: "Sklad",
+                icon: null,
+                page: "#!/storage"
+            },
+            {
+                text: "Nastavenia",
+                icon: null,
+                page: "#!/settings"
+            },
+            {
+                text: "Odhlásiť",
+                icon: null,
+                out: true
+            }
+        ],
 
         setActive: function(id) {
             var cid = 0;

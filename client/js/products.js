@@ -15,7 +15,7 @@ productsCTRL = function($scope, $http, User) {
             });
             $scope.loading = false;
         }
-        console.log($scope.products);
+        //console.log($scope.products);
     });
 }
 

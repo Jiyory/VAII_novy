@@ -4,7 +4,10 @@ loginCTRL = function($scope, Toast, $http, User, $location) {
         User.acc = angular.fromJson(sessionStorage.user);
         console.log(User.acc);
     }*/
-    console.log(User);
+    //console.log(User);
+    if (User.acc != null) {
+        $location.path("#!/");
+    }
 
     $scope.acc = {
         mail: "admin@admin.sk",

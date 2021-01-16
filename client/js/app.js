@@ -52,6 +52,13 @@ Routes = function($routeProvider) {
         resolve: {
             init: function(WebPage) { WebPage.setActive(0);}
         }
+    })
+    .when("/settings", {
+        templateUrl : "client/pages/settings.html",
+        controller: settingsCTRL,
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(0);}
+        }
     });
 }
 

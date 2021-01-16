@@ -1,5 +1,6 @@
-productsCTRL = function($scope, $http) {
+productsCTRL = function($scope, $http, User) {
     $scope.loading = true;
+    $scope.user = User;
     $scope.products = [];
     $scope.order = "name";
 
@@ -14,7 +15,7 @@ productsCTRL = function($scope, $http) {
             });
             $scope.loading = false;
         }
-        console.log($scope.products);
+        //console.log($scope.products);
     });
 }
 

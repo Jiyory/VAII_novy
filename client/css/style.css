@@ -269,6 +269,15 @@ input .find {
     color: #00F;
 }
 
+.delButton {
+    margin-top: 5px;
+    display: inline-block;
+    padding: 10px;
+    background-color: #999;
+    border-radius: 10px;
+    border: 2px solid #FFF;
+}
+
 @media only screen and (max-width: 767px) { /* SM */
     .menu-hide {
         max-height: 50px;

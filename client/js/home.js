@@ -13,7 +13,7 @@ homeCTRL = function($scope, $http, User, Toast, $timeout) {
             method: 'GET',
             url: 'server/load/home.php',
         }).then(function(value) {
-            console.log(value);
+            //console.log(value);
             if (value.status == 200) { // ak je vsetko ok
                 angular.forEach(value.data, function(item) {
                     $scope.cards.push(item);
@@ -232,7 +232,7 @@ technologyCTRL = function($scope, $http, User, Toast) {
             method: 'GET',
             url: 'server/load/technology.php',
         }).then(function(value) {
-            console.log(value);
+            //console.log(value);
             if (value.status == 200) { // ak je vsetko ok
                 angular.forEach(value.data, function(item) {
                     $scope.cards.push(item);

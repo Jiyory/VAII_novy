@@ -2,7 +2,19 @@
     <div class="column">
         <div class="row">
             <div class="col-12 tcenter page-head mg-20">
-                Zoznam produktov
+                Galeria
+            </div>
+        </div>
+        <div class="tright" ng-if="user.acc.admin == 1">
+            <i ng-if="!addImg.edit" ng-click="add()" class="far fa-plus-square tbig click add" style="margin-right: 35px;"></i>
+            <i ng-if="addImg.edit" ng-click="close()" class="fas fa-times-circle tbig click delete" style="margin-right: 35px;"></i>
+            <i ng-if="addImg.edit" ng-click="save()" class="fas fa-check tbig click edit" style="margin-right: 35px;"></i>
+        </div>
+        <div class="column col-9" ng-if="addImg.edit">
+            <div class="row"><input class="col-12 tsec" type="file" id="img" placeholder="Obrazok"></div>
+            <div class="row"><input class="col-12 tprim" ng-model="addImg.header" placeholder="Nadpis"></div>
+            <div class="row">
+                <textarea class="col-12 pd-15 tjust text" ng-model="addImg.text" rows="4" placeholder="Text"></textarea>
             </div>
         </div>
         <div class="column tcenter">
@@ -19,4 +31,7 @@
         <br>
         <b class="tprim">{{ imgMax.text }}</b>
     </div>
+    <span class="delButton" ng-if="user.acc.admin == 1">
+        <i ng-click="deleteImage(imgMax.iid)" class="far fa-trash-alt click delete tprim"></i>
+    </span>
 </div>

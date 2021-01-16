@@ -127,5 +127,20 @@
             $sql->execute();
             return $this->conn->lastInsertId();
         }
+
+        function insertGallery($header, $text) {
+            $sql = $this->conn->prepare("INSERT INTO gallery VALUES(NULL, :header, :text, CURRENT_TIMESTAMP)");
+            $sql->bindValue(':header', $header);
+            $sql->bindValue(':text', $text);
+            $sql->execute();
+            return $this->conn->lastInsertId();
+        }
+
+        function deleteGallery($id) {
+            $sql = $this->conn->prepare("DELETE FROM gallery WHERE iid=:iid");
+            $sql->bindValue(':iid', $id);
+            $sql->execute();
+            return $sql->rowCount();
+        }
     }
 ?>

@@ -195,6 +195,7 @@ th.col-12, td.col-12 { width: 100.00%; }
 .pd-20 { padding: 20px; }
 .pd-25 { padding: 25px; }
 
+.mg-a { margin: auto; }
 .mg-5 { margin: 5px; } /* TODO: dorobit na rozlisenia */
 .mg-10 { margin: 10px; }
 .mg-15 { margin: 15px; }

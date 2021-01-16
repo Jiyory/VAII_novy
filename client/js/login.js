@@ -51,7 +51,7 @@ registerCTRL = function($scope) {
 
 User = function() {
     return {
-        acc: sessionStorage.user == null ? null : angular.fromJson(sessionStorage.user),
+        acc: sessionStorage.user == null ? null :   .fromJson(sessionStorage.user),
     };
 }
 

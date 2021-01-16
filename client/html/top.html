@@ -10,14 +10,23 @@
                 </div>
                 <div class="col-4 hide show-sm hide-lg">
                     <ul class="left showbl"> <!-- pre nizke rozlisenia okrem XS -->
-                        <li ng-if="user.acc != null">{{ user.acc.fname + ' ' + user.acc.lname }}</li>
+                        <li ng-if="user.acc != null">
+                            <a ng-click="logout()">{{ user.acc.fname + ' ' + user.acc.lname }}</a>
+                            <ul>
+                                <li ng-repeat="item in menuAccount">
+                                    <i class="{{item.icon}}" ng-if="subitem.icon != null"></i>
+                                    <a href="{{item.page}}" ng-if="item.page">{{item.text}}</a>
+                                    <a class="click" ng-click="logout()" ng-if="item.out">{{item.text}}</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li ng-if="user.acc == null" ng-repeat="item in leftMenu">
                             <i class="{{item.icon}}"></i>
                             {{item.text}}
                             <i class="fas fa-angle-down" ng-if="item.menu != null"></i>
                             <ul ng-if="item.menu != null">
                                 <li ng-repeat="subitem in item.menu">
-                                    <i class="{{item.icon}}" ng-if="subitem.icon != null"></i>
+                                    <i class="{{subitem.icon}}" ng-if="subitem.icon != null"></i>
                                     {{subitem.text}}
                                 </li>
                             </ul>
@@ -41,7 +50,16 @@
                 </div>
                 <div class="col-2 hide show-xs show-lg">
                     <ul class="left showbl"> <!-- pre vysoke rozlisenia a XS -->
-                        <li ng-if="user.acc != null">{{ user.acc.fname + ' ' + user.acc.lname }}</li>
+                        <li ng-if="user.acc != null">
+                            {{ user.acc.fname + ' ' + user.acc.lname }}
+                            <ul>
+                                <li ng-repeat="item in menuAccount">
+                                    <i class="{{item.icon}}" ng-if="subitem.icon != null"></i>
+                                    <a href="{{item.page}}" ng-if="item.page">{{item.text}}</a>
+                                    <a class="click" ng-click="logout()" ng-if="item.out">{{item.text}}</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li ng-if="user.acc == null" ng-repeat="item in leftMenu">
                             <i class="{{item.icon}}"></i>
                             {{item.text}}

@@ -1,4 +1,4 @@
-loginCTRL = function($scope, Toast, $http, User) {
+loginCTRL = function($scope, Toast, $http, User, $location) {
     $scope.login = true;
     /*if (sessionStorage.user != null) {
         User.acc = angular.fromJson(sessionStorage.user);
@@ -39,6 +39,7 @@ loginCTRL = function($scope, Toast, $http, User) {
                     User.acc = value.data;
                     //console.log(User.acc);
                     sessionStorage.user = angular.toJson(User.acc);
+                    $location.path("#!/"); // redirect
                 }
             });
         }
@@ -51,7 +52,7 @@ registerCTRL = function($scope) {
 
 User = function() {
     return {
-        acc: sessionStorage.user == null ? null : angular.fromJson(sessionStorage.user),
+        acc: sessionStorage.user == null ? null : angular.fromJson(sessionStorage.user)
     };
 }
 

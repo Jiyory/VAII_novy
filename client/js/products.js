@@ -1,5 +1,6 @@
-productsCTRL = function($scope, $http) {
+productsCTRL = function($scope, $http, User) {
     $scope.loading = true;
+    $scope.user = User;
     $scope.products = [];
     $scope.order = "name";
 

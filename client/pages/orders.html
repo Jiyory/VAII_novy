@@ -1,0 +1,147 @@
+<div class="container page">
+    <div class="column">
+        <div class="row">
+            <div class="col-12 tcenter page-head mg-20">
+                Vase objednávky
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 tright">
+                <button ng-click="add()" class="mg-5">Vytvorit objednavku</button>
+            </div>
+        </div>
+        <div class="column order tmid" ng-if="create.show">
+            <div class="column row-sm">
+                <div class="col-4 tprim pd-5">
+                    Nova objednavka
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8 pd-5">
+                    <b>Nazov produktu</b>
+                </div>
+                <div class="col-4">
+                    <b>Pocet kusov</b>
+                </div>
+            </div>
+            <div class="row item" ng-repeat="item in create.items">
+                <div class="col-8 pd-5">
+                    <i ng-if="editing.id != order.oid" ng-click="deleteItem($index)" class="far fa-trash-alt tbig click delete"></i>
+                    <select class="w-66" name="item.pid" ng-model="item.pid">
+                        <option value="0">Zvolte produkt...</option>
+                        <option value="{{prod.pid}}" ng-repeat="prod in products">{{prod.name}}</option>
+                    </select>
+                </div>
+                <div class="col-4 pd-5">
+                    <input ng-model="item.amount_o">
+                </div>
+            </div>
+            <div class="column">
+                <i ng-click="addItem()" class="far fa-plus-square tbig click add pd-5" style="margin-right: 35px;"></i>
+
+                <span class="fright">
+                    <i ng-click="closeAdd()" class="fas fa-times-circle tbig click pd-5"></i>
+                    <i ng-click="saveAdd()" class="fas fa-check click tbig edit pd-5"></i>
+                </span>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row" ng-if="orders.length == 0">
+                <h3>Nemate ziadnu vytvorenu objednavku.</h3>
+            </div>
+            <div class="column order tmid" ng-repeat="order in orders">
+                <div class="column row-sm">
+                    <div class="col-4 tprim pd-5">
+                        Objednavka c.: <b>{{order.oid}}</b>
+                    </div>
+                    <div class="col-8 pd-5">
+                        Vytvorena: <b>{{order.create_date}}</b>
+                    </div>
+                </div>
+                <div class="row-sm column">
+                    <div class="col-8 pd-5">
+                        <b>Nazov produktu</b>
+                    </div>
+                    <div class="col-4 pd-5">
+                        <b>Pocet kusov</b>
+                    </div>
+                </div>
+                <div class="row item" ng-repeat="item in order.data">
+                    <div class="col-8 pd-5">
+                        {{item.name}}
+                    </div>
+                    <div class="col-4 pd-5">
+                        {{item.amount_o}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" ng-if="user.acc.admin == 1">
+            <div class="row">
+                <div class="col-12 tcenter page-head mg-20">
+                    Vsetky objednavky
+                </div>
+            </div>
+            <div class="row-md column">
+                <div class="col-2"></div>
+                <div class="col-8 mg-15 tcenter">
+                    <div>
+                        <input class="w-100 tcenter" style="padding: 8px 0px;" placeholder="Hladať" ng-model="find">
+                    </div>
+                </div>
+                <div class="col-2 tcenter mg-15">
+                    <select class="w-100" name="sort" ng-model="sort">
+                        <option value="oid">Zoradit podla...</option>
+                        <option value="oid">Cislo objednavky</option>
+                        <option value="create_date">Datum vytvorenia</option>
+                        <option value="done_date">Datum dokoncenia</option>
+                        <option value="username">Uzivatel</option>
+                      </select>
+                </div>
+            </div>
+            <div class="column order tmid" ng-repeat="order in ordersAll | filter: find | orderBy: sort">
+                <div class="column row-sm">
+                    <div class="col-4 tprim pd-5">
+                        Objednavka c.: <b>{{order.oid}}</b>
+                    </div>
+                    <div class="col-8 pd-5">
+                        Vytvorena: <b>{{order.create_date}}</b>
+                    </div>
+                </div>
+                <div class="column row-sm">
+                    <div class="col-4 tprim pd-5">
+                        Vytvoril.: <b>{{order.username}}</b>
+                    </div>
+                    <div class="col-8 pd-5">
+                        Hotovo: <b>{{order.done_date}}</b>
+                        <b ng-if="editing.id == order.oid"><i ng-click="done(order)" class="fas fa-check click edit"></i></b>
+                    </div>
+                </div>
+                <div class="row-sm column">
+                    <div class="col-8 pd-5">
+                        <b>Nazov produktu</b>
+                    </div>
+                    <div class="col-4 pd-5">
+                        <b>Pocet kusov</b>
+                    </div>
+                </div>
+                <div class="row-sm column item" ng-repeat="item in order.data">
+                    <div class="col-8 pd-5">
+                        {{item.name}}
+                    </div>
+                    <div class="col-4 pd-5">
+                        <span ng-if="editing.id == order.oid"><input ng-model="item.amount_done"></span>
+                        <span ng-if="editing.id != order.oid">{{item.amount_done}}</span> / {{item.amount_o}}
+                    </div>
+                </div>
+                <div class="column tbig tright">
+                    <i ng-if="editing.id != order.oid" ng-click="delete(order)" class="far fa-trash-alt click delete"></i>
+                    <i ng-if="editing.id != order.oid" ng-click="edit(order)" class="fas fa-edit click edit"></i>
+
+                    <i ng-if="editing.id == order.oid" ng-click="close(order)" class="fas fa-times-circle click"></i>
+                    <i ng-if="editing.id == order.oid" ng-click="save(order)" class="fas fa-check click edit"></i>
+                </div>
+            </div>
+        </div>
+</div>

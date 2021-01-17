@@ -7,7 +7,9 @@
         </div>
         <div class="column">
             <div class="row tcenter tbig">
-                Nastavenie uložíte kliknutím na zelené tlačidlo vpravo.
+                <div class="col-12 tcenter">
+                    Nastavenie uložíte kliknutím na zelené tlačidlo vpravo.
+                </div>
             </div>
             <div class="column">
                 <div class="col-12 tcenter tbig mg-20">
@@ -15,37 +17,37 @@
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Meno">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Meno" ng-model="newUser.acc.fname">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5">
-                        <i ng-click="" class="fas fa-check tbig click edit"></i>
+                        <i ng-click="changeFName()" class="fas fa-check tbig click edit"></i>
                     </div>
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Priezvisko">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Priezvisko" ng-model="newUser.acc.lname">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5">
-                        <i ng-click="" class="fas fa-check tbig click edit"></i>
+                        <i ng-click="changeLName()" class="fas fa-check tbig click edit"></i>
                     </div>
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Email">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Email" ng-model="newUser.acc.mail">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5">
-                        <i ng-click="" class="fas fa-check tbig click edit"></i>
+                        <i ng-click="changeMail()" class="fas fa-check tbig click edit"></i>
                     </div>
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Spolocnost">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Spolocnost" ng-model="newUser.acc.comp">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5">
-                        <i ng-click="" class="fas fa-check tbig click edit"></i>
+                        <i ng-click="changeCompany()" class="fas fa-check tbig click edit"></i>
                     </div>
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Telefonnne cislo">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Telefonnne cislo" ng-model="newUser.acc.phone">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5">
-                        <i ng-click="" class="fas fa-check tbig click edit"></i>
+                        <i ng-click="changePhone()" class="fas fa-check tbig click edit"></i>
                     </div>
                 </div>
             </div>
@@ -55,15 +57,71 @@
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Nove heslo">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="password" placeholder="Nove heslo">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5"></div>
                 </div>
                 <div class="row pd-5">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5"></div>
-                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="text" placeholder="Nove heslo znova">
+                    <input class="col-10 col-sm-8 col-md-4 col-lg-4" type="password" placeholder="Nove heslo znova">
                     <div class="col-1 col-sm-2 col-md-4 col-lg-5 pd-5">
-                        <i ng-click="" class="fas fa-check tbig click edit"></i>
+                        <i ng-click="changePassword()" class="fas fa-check tbig click edit"></i>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row show hide-xm" ng-if="user.acc.admin == 1">
+            <div class="col-12 tcenter">
+                Nastavenie adminstratorov je dostupne len na desktopovej verzii.
+            </div>
+        </div>
+        <div class="column hide show-xm" ng-if="user.acc.admin == 1">
+            <br><br><br>
+            <div class="row tbig">
+                <div class="col-12 tcenter">
+                    Nastavenie adminstratorov
+                </div>
+            </div>
+            <div class="row tbig tcenter">
+                <div class="col-2">
+                    Adminstrator
+                </div>
+                <div class="col-2">
+                    Cele meno
+                </div>
+                <div class="col-2">
+                    Email
+                </div>
+                <div class="col-2">
+                    Spolocnost
+                </div>
+                <div class="col-2">
+                    Tel. cislo
+                </div>
+                <div class="col-2">
+                    Zmazat/Opravn.
+                </div>
+            </div>
+            <div class="row tprim tcenter" ng-repeat="acc in accounts">
+                <div class="col-2">
+                    <span ng-if="acc.admin == 1">Ano</span>
+                    <span ng-if="acc.admin != 1">Nie</span>
+                </div>
+                <div class="col-2">
+                    {{acc.fname}} {{acc.lname}}
+                </div>
+                <div class="col-2">
+                    {{acc.mail}}
+                </div>
+                <div class="col-2">
+                    {{acc.comp}}
+                </div>
+                <div class="col-2">
+                    {{acc.phone}}
+                </div>
+                <div class="col-2 tbig">
+                    <i ng-click="deleteAcc(acc)" class="fas fa-trash-alt click delete"></i>
+                    <i ng-click="setAdmin(acc)" class="fas fa-angle-double-up click edit" ng-if="acc.admin != 1"></i>
+                    <i ng-click="unsetAdmin(acc)" class="fas fa-angle-double-down click add" ng-if="acc.admin == 1"></i>
                 </div>
             </div>
         </div>

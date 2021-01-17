@@ -126,26 +126,27 @@
             oid INT NOT NULL,
             pid INT NOT NULL,
             amount_o INT,
+            amount_done INT,
             PRIMARY KEY (oid, pid),
             FOREIGN KEY (oid) REFERENCES orders(oid),
             FOREIGN KEY (pid) REFERENCES products(pid))
             CHARACTER SET utf8 COLLATE utf8_general_ci";
         $orderItemsData = [
-            "INSERT INTO order_items VALUES(1, 1, 10)", /* NESMIE SA OPAKOVAT PRVE A DRUHE CISLO */
-            "INSERT INTO order_items VALUES(1, 2, 10)",
-            "INSERT INTO order_items VALUES(1, 3, 10)",
-            "INSERT INTO order_items VALUES(2, 4, 10)",
-            "INSERT INTO order_items VALUES(2, 5, 10)",
-            "INSERT INTO order_items VALUES(3, 1, 10)",
-            "INSERT INTO order_items VALUES(3, 2, 10)",
-            "INSERT INTO order_items VALUES(3, 3, 10)",
-            "INSERT INTO order_items VALUES(3, 4, 10)",
-            "INSERT INTO order_items VALUES(5, 5, 10)",
-            "INSERT INTO order_items VALUES(5, 1, 10)",
-            "INSERT INTO order_items VALUES(5, 2, 10)",
-            "INSERT INTO order_items VALUES(5, 3, 10)",
-            "INSERT INTO order_items VALUES(5, 4, 10)",
-            "INSERT INTO order_items VALUES(1, 5, 10)",
+            "INSERT INTO order_items VALUES(1, 1, 10, 0)", /* NESMIE SA OPAKOVAT PRVE A DRUHE CISLO */
+            "INSERT INTO order_items VALUES(1, 2, 10, 0)",
+            "INSERT INTO order_items VALUES(1, 3, 10, 0)",
+            "INSERT INTO order_items VALUES(2, 4, 10, 0)",
+            "INSERT INTO order_items VALUES(2, 5, 10, 0)",
+            "INSERT INTO order_items VALUES(3, 1, 10, 0)",
+            "INSERT INTO order_items VALUES(3, 2, 10, 0)",
+            "INSERT INTO order_items VALUES(3, 3, 10, 0)",
+            "INSERT INTO order_items VALUES(3, 4, 10, 0)",
+            "INSERT INTO order_items VALUES(5, 5, 10, 0)",
+            "INSERT INTO order_items VALUES(5, 1, 10, 0)",
+            "INSERT INTO order_items VALUES(5, 2, 10, 0)",
+            "INSERT INTO order_items VALUES(5, 3, 10, 0)",
+            "INSERT INTO order_items VALUES(5, 4, 10, 0)",
+            "INSERT INTO order_items VALUES(1, 5, 10, 0)",
             "INSERT INTO changes VALUES(6, 'order_items', 'Tabulka order_items vytvorena.', CURRENT_TIMESTAMP)"
         ];
         /* TEXTS */

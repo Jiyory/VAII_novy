@@ -59,6 +59,20 @@ Routes = function($routeProvider) {
         resolve: {
             init: function(WebPage) { WebPage.setActive(0);}
         }
+    })
+    .when("/orders", {
+        templateUrl : "client/pages/orders.html",
+        controller: ordersCTRL,
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(0);}
+        }
+    })
+    .when("/storage", {
+        templateUrl : "client/pages/storage.html",
+        controller: settingsCTRL,
+        resolve: {
+            init: function(WebPage) { WebPage.setActive(0);}
+        }
     });
 }
 
@@ -126,11 +140,11 @@ WebPage = function () {
                 icon: null,
                 page: "#!/orders"
             },
-            {
+            /*{
                 text: "Sklad",
                 icon: null,
                 page: "#!/storage"
-            },
+            },*/
             {
                 text: "Nastavenia",
                 icon: null,

@@ -35,7 +35,7 @@ loginCTRL = function($scope, Toast, $http, User, $location) {
                 data: $scope.pData,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function(value) {
-                console.log(value);
+                //console.log(value);
                 if (value.data != null || value.data != "") {
                     value.data.pass = null; // keby nejaky spekulant chcel dekodovat heslo
                     value.data.salt = null;

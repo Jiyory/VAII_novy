@@ -1,4 +1,4 @@
-topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, WebPage, UserData, User) {
+topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, WebPage, UserData, User, $location) {
 
     $scope.user = User;
 
@@ -24,6 +24,7 @@ topCTRL = function($scope, $sce, $templateRequest, $compile, $window, $http, Web
     $scope.logout = function() {
         User.acc = null;
         sessionStorage.user = null;
+        $location.path("#!/");
     }
 }
 

@@ -27,7 +27,7 @@
                             <ul ng-if="item.menu != null">
                                 <li ng-repeat="subitem in item.menu">
                                     <i class="{{subitem.icon}}" ng-if="subitem.icon != null"></i>
-                                    {{subitem.text}}
+                                    <a href="{{subitem.page}}">{{subitem.text}}</a>
                                 </li>
                             </ul>
                         </li>
@@ -68,7 +68,7 @@
                                 <li ng-repeat="subitem in item.menu">
                                     <a href="{{subitem.page}}">
                                         <i class="{{subitem.icon}}" ng-if="subitem.icon != null"></i>
-                                        {{subitem.text}}
+                                        <a href="{{subitem.page}}">{{subitem.text}}</a>
                                     </a>
                                 </li>
                             </ul>

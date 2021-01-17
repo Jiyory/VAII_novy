@@ -139,10 +139,12 @@ homeCTRL = function($scope, $http, User, Toast, $timeout) {
     $scope.close = function(card) {
         var resp = confirm("Naozaj chcete pokracovat? Vsetky zmeny budu stratene.");
         if (resp) {
+            if ($scope.editing.id != 0) {
+                card.header = angular.copy($scope.editing.nadpis);
+                card.text = angular.copy($scope.editing.text);
+                card.icon = angular.copy($scope.editing.icon);
+            }
             $scope.editing.id = -1;
-            card.header = angular.copy($scope.editing.nadpis);
-            card.text = angular.copy($scope.editing.text);
-            card.icon = angular.copy($scope.editing.icon);
         }
     }
 

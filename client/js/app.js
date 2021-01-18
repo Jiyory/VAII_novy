@@ -47,7 +47,7 @@ Routes = function($routeProvider) {
         }
     })
     .when("/register", {
-        templateUrl : "client/pages/login.html",
+        templateUrl : "client/pages/register.html",
         controller: registerCTRL,
         resolve: {
             init: function(WebPage) { WebPage.setActive(0);}

@@ -49,6 +49,7 @@
         function loadHome() {
             $db = "SELECT lname, fname, tid, header, text, image, icon, create_date FROM texts JOIN users USING (uid) WHERE page=true";
             $res = $this->conn->query($db);
+            $rows = [];
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $data;
             }
@@ -58,6 +59,7 @@
         function loadTechnol() {
             $db = "SELECT lname, fname, tid, header, text, image, icon, create_date FROM texts JOIN users USING (uid) WHERE page=false";
             $res = $this->conn->query($db);
+            $rows = [];
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $data;
             }
@@ -67,6 +69,7 @@
         function loadGallery() {
             $db = "SELECT * FROM gallery";
             $res = $this->conn->query($db);
+            $rows = [];
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $data;
             }
@@ -76,6 +79,7 @@
         function loadProducts() {
             $db = "SELECT * FROM products";
             $res = $this->conn->query($db);
+            $rows = [];
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $data;
             }
@@ -158,6 +162,7 @@
         function loadAccounts() {
             $db = "SELECT uid, mail, admin, fname, lname, comp, phone, reg_date FROM users";
             $res = $this->conn->query($db);
+            $rows = [];
             while ($data = $res->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $data;
             }
@@ -187,6 +192,7 @@
                 $sql =  $this->conn->prepare("SELECT * FROM order_items JOIN orders USING (oid) JOIN products USING (pid) JOIN users USING(uid) ORDER BY oid ASC");
             }
             $sql->execute();
+            $rows = [];
             while ($data = $sql->fetch(PDO::FETCH_ASSOC)) {
                 $rows[] = $data;
             }
@@ -235,5 +241,38 @@
             }
             return $sql->rowCount();
         }
+
+        function register($mail, $pass, $fname, $lname, $comp, $phone) {
+            $salt = random_str(32);
+            $toHash = $pass.$salt;
+            $passHash = hash('sha256', $toHash);
+            $sql = $this->conn->prepare("INSERT INTO users VALUES(NULL, :mail, :pass, :salt, 0, :fname, :lname, :comp, :phone, CURRENT_TIMESTAMP)");
+            $sql->bindValue(':mail', $mail);
+            $sql->bindValue(':fname', $fname);
+            $sql->bindValue(':lname', $lname);
+            $sql->bindValue(':comp', $comp);
+            $sql->bindValue(':phone', $phone);
+            $sql->bindValue(':salt', $salt);
+            $sql->bindValue(':pass', $passHash);
+            $sql->execute();
+            return $this->conn->lastInsertId();
+        }
+    }
+
+    // salt
+    // https://stackoverflow.com/questions/4356289/php-random-string-generator/31107425#31107425
+    function random_str(
+        int $length = 64,
+        string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    ): string {
+        if ($length < 1) {
+            throw new \RangeException("Length must be a positive integer");
+        }
+        $pieces = [];
+        $max = mb_strlen($keyspace, '8bit') - 1;
+        for ($i = 0; $i < $length; ++$i) {
+            $pieces []= $keyspace[random_int(0, $max)];
+        }
+        return implode('', $pieces);
     }
 ?>

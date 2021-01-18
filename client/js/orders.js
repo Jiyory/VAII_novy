@@ -56,7 +56,9 @@ ordersCTRL = function($scope, $http, User, $location) {
             orders.push({
                 data: items,
                 oid: lastOid,
-                create_date: items[0].create_date_o
+                create_date: items[0].create_date_o,
+                done_date: items[0].done_date,
+                username: items[0].fname + " " + items[0].lname
             });
         }
     }
@@ -245,7 +247,7 @@ ordersCTRL = function($scope, $http, User, $location) {
             method: 'GET',
             url: 'server/load/products.php',
         }).then(function(value) {
-            console.log(value);
+            //console.log(value);
             if (value.status == 200) {
                 angular.forEach(value.data, function(item) {
                     $scope.products.push(item);

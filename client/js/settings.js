@@ -127,7 +127,7 @@ settingsCTRL = function($scope, $http, User, $location, Toast) {
 
     $scope.setAdmin = function(acc) {
         $scope.pData = $.param({
-            uid: $scope.user.acc.uid,
+            uid: acc.uid,
             admin: 1
         });
         $http({

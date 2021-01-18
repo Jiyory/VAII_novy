@@ -11,7 +11,7 @@
             <i ng-if="addImg.edit" ng-click="save()" class="fas fa-check tbig click edit" style="margin-right: 35px;"></i>
         </div>
         <div class="column col-9" ng-if="addImg.edit">
-            <div class="row"><input class="col-12 tsec" type="file" id="img" placeholder="Obrazok"></div>
+            <div class="row"><input class="col-12 tsec" type="file" id="img" placeholder="Obrazok" accept="image/x-png,image/gif,image/jpeg"></div>
             <div class="row"><input class="col-12 tprim" ng-model="addImg.header" placeholder="Nadpis"></div>
             <div class="row">
                 <textarea class="col-12 pd-15 tjust text" ng-model="addImg.text" rows="4" placeholder="Text"></textarea>
